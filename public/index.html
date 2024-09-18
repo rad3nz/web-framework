@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./css/output.css">
+</head>
+<body>
+  <div class="flex flex-wrap">
+    <nav id="navbar" class="bg-white border-b border-gray-200 px-4 py-3 flex md:hidden items-center justify-between fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+      <div class="flex items-center">
+          <button id="mobile-menu-button" class="mr-2 md:hidden">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+          </button>
+          <div class="text-xl font-bold">Wago</div>
+      </div>
+    </nav>
+        
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden md:block md:w-64 bg-white p-4 w-full h-screen md:sticky top-16 z-10 overflow-y-auto">
+        <div class="flex flex-col h-full justify-between">
+            <div>
+                <h2 class="font-semibold mb-4">Logo</h2>
+                <nav>
+                <ul class="space-y-2">
+                    <li>
+                      <a href="#" data-module="dashboard" class="flex items-center text-slate-900 hover:text-slate-950 hover:font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        </svg>
+                        Dashboard
+                      </a>
+                    </li>
+                </ul>
+                <ul class="space-y-2">
+                    <li>
+                      <a href="#" data-module="admin" class="flex items-center text-slate-900 hover:text-slate-950 hover:font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        </svg>
+                        Admin
+                      </a>
+                    </li>
+                </ul>
+                <ul class="space-y-2">
+                    <li>
+                      <a href="#" data-module="campaign" class="flex items-center text-slate-900 hover:text-slate-950 hover:font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        </svg>
+                        Campaign
+                      </a>
+                    </li>
+                </ul>
+              </nav>
+            </div>
+            <footer class="flex items-center justify-between">
+                <a href="#" class="text-gray-600 flex items-center space-x-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3" /></svg>
+                    <span>Logout</span>
+                </a>
+                <div class="h-8 w-8 bg-gray-200 rounded-full"></div>
+            </footer>
+        </div>
+    </aside>
+
+  <main class="flex-1 p-6 mt-16 md:mt-0" id="content">
+    <!-- Content dari module akan dimuat di sini -->
+    <h2>Welcome to Admin Dashboard</h2>
+    <p>Please select a module from the navigation.</p>
+  </main>
+  </div>
+
+  <script src="./js/scripts.js"></script>
+</body>
+</html>
