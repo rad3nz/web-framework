@@ -12,16 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       document.body.appendChild(script);
     }
-  
+    loadScript('./js/utils.js', function() {
+      console.log('utils.js loaded successfully.')
+    });   
     loadScript('./js/api.js', function() {
       console.log('api.js loaded successfully.');
     });  
     loadScript('./js/table.js', function() {
       console.log('table.js loaded successfully.');
     });
-    loadScript('./js/utils.js', function() {
-      console.log('utils.js loaded successfully.')
-    });   
     
     // Fungsi untuk memuat konten modul
     function loadModuleContent(module) {

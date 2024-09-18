@@ -33,7 +33,7 @@ window.changePage = function(newPage) {
 addButton = document.getElementById('addButton');
 if (addButton) {
     addButton.addEventListener('click', function() {
-        document.getElementById('create_data_name').value = '';
+        document.getElementById('cs_admin').value = '';
         document.getElementById('create_phone').value = '';
         document.getElementById('createModal').classList.remove('hidden');
     });
@@ -45,12 +45,23 @@ function addTableEventListeners() {
     const editAdminButtons = document.querySelectorAll('.editAdminButton');
     editAdminButtons.forEach(button => {
         button.addEventListener('click', async function() {
-            const adminId = this.getAttribute('data-id');
-            const adminData = await fetchById(currentDataType, adminId);
+            const cs_id = this.getAttribute('data-id');
+            const adminData = await fetchById(currentDataType, cs_id);
+            
             if (adminData) {
-                document.getElementById('cs_id').value = adminId;
-                document.getElementById('cs_admin').value = adminData.cs_admin;
-                document.getElementById('phone').value = adminData.phone.replace(/^62/, '');
+                let adminName = adminData.cs_admin; // Fetching the admin name from adminData
+                let phone = adminData.phone.replace(/^62/, ''); // Adjusting the phone number
+
+                document.getElementById('cs_id').value = cs_id;
+                document.getElementById('edit_cs_admin').value = adminName;
+                document.getElementById('phone').value = phone;
+
+                // Log the values
+                console.log('cs_admin:', adminName);
+                console.log('cs_id:', cs_id);
+                console.log('phone (after prefix adjustment):', phone);
+
+                // Open the modal
                 document.getElementById('editModal').classList.remove('hidden');
             } else {
                 showErrorDialog('Failed to load admin data.');
@@ -58,12 +69,13 @@ function addTableEventListeners() {
         });
     });
 
+
     // Open Delete Modal
     const deleteAdminButtons = document.querySelectorAll('.deleteAdminButton');
     deleteAdminButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const adminId = this.getAttribute('data-id');
-            document.getElementById('confirmDeleteButton').setAttribute('data-id', adminId);
+            const cs_id = this.getAttribute('data-id');
+            document.getElementById('confirmDeleteButton').setAttribute('data-id', cs_id);
             document.getElementById('deleteModal').classList.remove('hidden');
         });
     });
@@ -77,7 +89,7 @@ function validatePhoneNumber(phoneNumber) {
 
 // CREATE ADMIN FUNCTION
 async function handleCreateAdmin() {
-    const adminName = document.getElementById('create_data_name').value;
+    const adminName = document.getElementById('cs_admin').value;
     let phone = document.getElementById('create_phone').value;
 
     // Validation for phone number
@@ -90,14 +102,20 @@ async function handleCreateAdmin() {
     // Add country prefix
     phone = `62${phone}`;
 
+    // Construct the payload
+    payload = {
+        cs_admin: adminName,
+        phone: phone
+    };
+
     // Call the create function from api.js
-    const result = await createData(currentDataType, adminName, phone);
+    const result = await createData(currentDataType, payload);
 
     if (result) {
         showSuccessDialog('Admin successfully created!');
 
         // Clear the input fields
-        document.getElementById('create_data_name').value = '';
+        document.getElementById('cs_admin').value = '';
         document.getElementById('create_phone').value = '';
 
         // Close the modal
@@ -110,9 +128,10 @@ async function handleCreateAdmin() {
     }
 }
 
+
 // EDIT ADMIN FUNCTION
 async function handleEditAdmin() {
-    const adminId = document.getElementById('cs_id').value;
+    const cs_id = document.getElementById('cs_id').value;
     const adminName = document.getElementById('cs_admin').value;
     let phone = document.getElementById('phone').value;
 
@@ -126,8 +145,13 @@ async function handleEditAdmin() {
 
     phone = `62${phone}`; // Add the prefix back
 
+    payload = {
+        cs_admin: adminName,
+        phone: phone
+    };
+
     // Call the update function from api.js
-    const result = await updateData(currentDataType, adminId, adminName, phone);
+    const result = await updateData(currentDataType, cs_id, payload);
 
     if (result) {
         showSuccessDialog('Admin successfully updated!');
@@ -140,10 +164,10 @@ async function handleEditAdmin() {
 
 // DELETE ADMIN FUNCTION
 async function handleDeleteAdmin() {
-    const adminId = document.getElementById('confirmDeleteButton').getAttribute('data-id');
+    const cs_id = document.getElementById('confirmDeleteButton').getAttribute('data-id');
 
     // Call the delete function from api.js
-    const result = await deleteData(currentDataType, adminId);
+    const result = await deleteData(currentDataType, cs_id);
 
     if (result) {
         showSuccessDialog('Admin successfully deleted!');

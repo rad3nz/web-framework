@@ -31,7 +31,8 @@ window.changePage = function(newPage) {
 addCampaignButton = document.getElementById('addCampaignButton');
 if (addCampaignButton) {
     addCampaignButton.addEventListener('click', function() {
-        document.getElementById('create_data_name').value = '';
+        document.getElementById('campaign_name').value = '';
+        document.getElementById('campaign_message').value = '';
         document.getElementById('createModal').classList.remove('hidden');
     });
 }
@@ -47,6 +48,7 @@ function addTableEventListeners() {
             if (campaignData) {
                 document.getElementById('campaign_id').value = campaignId;
                 document.getElementById('campaign_name').value = campaignData.campaign_name;
+                document.getElementById('campaign_message').value = campaignData.campaign_message;
                 document.getElementById('editModal').classList.remove('hidden');
             } else {
                 showErrorDialog('Failed to load campaign data.');
@@ -68,22 +70,33 @@ function addTableEventListeners() {
 
 // CREATE campaign FUNCTION
 async function handleCreateCampaign() {
-    const campaignName = document.getElementById('create_data_name').value;
+    const campaignName = document.getElementById('campaign_name').value;
+    const campaignMessage = document.getElementById('campaign_message').value;
+
+    // Log the campaign name and message
+    console.log('Campaign Name:', campaignName);
+    console.log('Campaign Message:', campaignMessage);
+
+    payload = {
+        campaign_name: campaignName,
+        campaign_message: campaignMessage,
+    };
 
     // Call the create function from api.js
-    const result = await createData(currentDataType, campaignName);
+    const result = await createData(currentDataType, payload);
 
     if (result) {
-        showSuccessDialog('campaign successfully created!');
+        showSuccessDialog('Campaign successfully created!');
 
         // Clear the input fields
-        document.getElementById('create_data_name').value = '';
+        document.getElementById('campaign_name').value = '';
+        document.getElementById('campaign_message').value = '';
 
         // Close the modal
         closeModal('createModal');
 
         // Refresh the table data after successful creation
-        await fetchAndUpdateData();
+        fetchAndUpdateData();
     } else {
         showErrorDialog('Failed to create campaign. Please try again.');
     }

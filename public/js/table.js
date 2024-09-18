@@ -1,5 +1,3 @@
-
-
 let dataItems = null;
 let rowTemplate = null;
 let currentDataType = null;

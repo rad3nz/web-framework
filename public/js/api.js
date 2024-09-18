@@ -13,9 +13,9 @@ const endpoints = {
   campaign: {
     table: `${baseUrl}/data/campaign/wa/redirect/${owner_id}`,
     detail: `${baseUrl}/detail/campaign/wa/redirect`,
-    update: `${baseUrl}/update/cs/campaign/wa/redirect`,
-    create: `${baseUrl}/add/cs/campaign/wa/redirect`,
-    delete: `${baseUrl}/delete/campaign/admin/wa/redirect`
+    update: `${baseUrl}/update/campaign/wa/redirect`,
+    create: `${baseUrl}/add/campaign/wa/redirect`,
+    delete: `${baseUrl}/delete/campaign/wa/redirect`
   }
 };
 
@@ -66,14 +66,16 @@ async function updateData(type, id, payload) {
 
 async function createData(type, payload) {
   try {
-    const response = await fetch(endpoints[type].create, {
+    const body = JSON.stringify({ owner_id, ...payload }); 
+    const response = await fetch(`${endpoints[type].create}`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${API_TOKEN}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ...payload, owner_id })
+      body: body
     });
+
     if (!response.ok) throw new Error('Network response was not ok');
     return await response.json();
   } catch (error) {
@@ -81,6 +83,7 @@ async function createData(type, payload) {
     return null;
   }
 }
+
 
 async function deleteData(type, id) {
   try {
