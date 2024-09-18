@@ -132,7 +132,7 @@ async function handleCreateAdmin() {
 // EDIT ADMIN FUNCTION
 async function handleEditAdmin() {
     const cs_id = document.getElementById('cs_id').value;
-    const adminName = document.getElementById('cs_admin').value;
+    const adminName = document.getElementById('edit_cs_admin').value;
     let phone = document.getElementById('phone').value;
 
     // Remove prefix and validate phone number
