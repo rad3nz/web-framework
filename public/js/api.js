@@ -84,7 +84,6 @@ async function createData(type, payload) {
   }
 }
 
-
 async function deleteData(type, id) {
   try {
     const response = await fetch(`${endpoints[type].delete}/${id}`, {

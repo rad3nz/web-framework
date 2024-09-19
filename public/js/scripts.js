@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     loadScript('./js/table.js', function() {
       console.log('table.js loaded successfully.');
     });
+    loadScript('./js/crud.js', function() {
+      console.log('crud.js loaded successfully.');
+    });
     
     // Fungsi untuk memuat konten modul
     function loadModuleContent(module) {
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
           pagemodule = 'dashboard';
           // Saat halaman pertama kali dimuat, tampilkan modul dashboard sebagai default
-          loadModuleContent('dashboard'); 
+          loadModuleContent(pagemodule); 
   
     // Tambahkan event listener untuk setiap link menu
     links.forEach(link => {
