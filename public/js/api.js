@@ -39,7 +39,8 @@ async function fetchById(type, id) {
     });
     if (!response.ok) throw new Error('Network response was not ok');
     const data = await response.json();
-    return data.data[0];
+    console.log(data);
+    return data.detail[0];
   } catch (error) {
     console.error(`Error fetching ${type} by ID:`, error);
     return null;
