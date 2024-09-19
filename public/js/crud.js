@@ -7,11 +7,11 @@ function setDataType(type) {
 async function fetchAndUpdateData() {
     try {
         const response = await fetchData(currentDataType, state[currentDataType].currentPage);
-        if (!response || !response.data) {
+        if (!response || !response.tableData) {
             throw new Error('Invalid response from the API');
         }
 
-        dataItems = response.data;
+        dataItems = response.tableData;
         state[currentDataType].totalPages = response.totalPages;
         state[currentDataType].totalRecords = response.totalRecords;
         

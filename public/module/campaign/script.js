@@ -8,7 +8,6 @@ window.rowTemplate = function(item, index) {
         <tr>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${index + 1}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.campaign_name}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-500">${item.url}</td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <button class="text-indigo-600 hover:text-indigo-900 mr-2 editButton" data-id="${item.campaign_id}">Edit</button>
                 <button class="text-red-600 hover:text-red-900 deleteButton" data-id="${item.campaign_id}">Delete</button>
@@ -25,10 +24,7 @@ function validateFormData(formData) {
         showErrorDialog('Campaign name is required.');
         return false;
     }
-    if (!formData.campaign_message || formData.campaign_message.trim() === '') {
-        showErrorDialog('Campaign message is required.');
-        return false;
-    }
+
     return true;
 }
 
