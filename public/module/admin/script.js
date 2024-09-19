@@ -28,15 +28,21 @@ function validatePhoneNumber(phoneNumber) {
 }
 
 // Implement specific validation for admin
-function validateFormData(formData) {
+function validateFormData(formData, formType) {
     if (!formData.cs_admin || formData.cs_admin.trim() === '') {
         showErrorDialog('Admin name is required.');
         return false;
     }
+
+    const tooltip = document.getElementById(`${formType}PhoneTooltip`);
+
     if (!validatePhoneNumber(formData.phone.replace(/^62/, ''))) {
-        showErrorDialog('Invalid phone number. It should be 9-12 digits after the country code.');
+        tooltip.classList.remove('hidden');
         return false;
+    } else {
+        tooltip.classList.add('hidden');
     }
+
     return true;
 }
 

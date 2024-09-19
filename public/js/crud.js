@@ -66,7 +66,7 @@ async function handleCreate() {
     const formData = getFormData('create');
     
     // Validation
-    if (!validateFormData(formData)) {
+    if (!validateFormData(formData, 'create')) {
         return;
     }
 
@@ -88,7 +88,7 @@ async function handleEdit() {
     const formData = getFormData('edit');
     
     // Validation
-    if (!validateFormData(formData)) {
+    if (!validateFormData(formData, 'edit')) {
         return;
     }
 
@@ -125,7 +125,12 @@ function getFormData(formType) {
     const form = document.getElementById(`${formType}Form`);
     const inputs = form.querySelectorAll('input, textarea');
     inputs.forEach(input => {
-        formData[input.name] = input.value;
+        if (input.name === 'phone') {
+            //if phone field is detected, add prefix '62' if it's not already present
+            formData[input.name] = input.value.startsWith('62') ? input.value : `62${input.value}`;
+        } else {
+            formData[input.name] = input.value;
+        }
     });
     return formData;
 }
@@ -146,10 +151,17 @@ function populateEditModal(data) {
     for (const key in data) {
         const input = form.querySelector(`[name="${key}"]`);
         if (input) {
-            input.value = data[key];
+            if (key === 'phone') {
+                //remove '62' prefix
+                const phoneNumberWithoutPrefix = data[key].startsWith('62') ? data[key].substring(2) : data[key];
+                input.value = phoneNumberWithoutPrefix;
+            } else {
+                input.value = data[key];
+            }
         }
     }
 }
+
 
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
