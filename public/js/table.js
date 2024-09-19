@@ -23,7 +23,7 @@ function loadData() {
         console.error('Table body element not found.');
         return;
     }
-  
+    
     tableBody.innerHTML = '';
   
     if (!dataItems || dataItems.length === 0) {

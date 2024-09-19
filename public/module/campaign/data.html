@@ -12,16 +12,19 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Campaign</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Link Campaign</th>
                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                 </tr>
             </thead>
-            <tbody id="tableBody" class="bg-white divide-y divide-gray-200">
+            <tbody id="tableBody" class="bg-white divide-y divide-gray-200">      
                 <!-- Table rows will be dynamically inserted here -->
             </tbody>
         </table>
     </div>
-
+    <!--Loading Spinner-->
+    <div id="loadingSpinner" class="hidden flex justify-center items-center">
+        <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+        <span class="ml-2 text-blue-500">Loading...</span>
+    </div>
     <div id="pagination" class="mt-4 flex justify-evenly">
         <!-- Pagination will be dynamically inserted here -->
     </div>
@@ -39,10 +42,6 @@
                             <div class="mb-4">
                                 <label for="campaign_name" class="block text-sm font-medium text-gray-700">Nama Campaign</label>
                                 <input type="text" name="campaign_name" id="campaign_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            </div>
-                            <div class="mb-4">
-                                <label for="campaign_message" class="block text-sm font-medium text-gray-700">Message Campaign</label>
-                                <textarea name="campaign_message" id="campaign_message" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                             </div>
                         </form>
                     </div>

@@ -5,6 +5,13 @@ function setDataType(type) {
 }
 
 async function fetchAndUpdateData() {
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const tableBody = document.querySelector('#tableBody');
+    
+    // Show the loading spinner
+    loadingSpinner.classList.remove('hidden');
+    tableBody.innerHTML = ''; // Optionally clear previous data
+
     try {
         const response = await fetchData(currentDataType, state[currentDataType].currentPage);
         if (!response || !response.tableData) {
@@ -21,6 +28,9 @@ async function fetchAndUpdateData() {
     } catch (error) {
         console.error('Error fetching data:', error);
         document.querySelector('#tableBody').innerHTML = '<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-red-500">Error loading data</td></tr>';
+    } finally {
+        // Hide the loading spinner when done
+        loadingSpinner.classList.add('hidden');
     }
 }
 

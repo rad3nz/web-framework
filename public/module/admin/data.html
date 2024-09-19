@@ -6,7 +6,7 @@
             </button>
         </div>
 
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">        
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
@@ -17,11 +17,16 @@
                     </tr>
                 </thead>
                 <tbody id="tableBody" class="bg-white divide-y divide-gray-200">
+                       
                     <!-- Table rows will be dynamically inserted here -->
                 </tbody>
             </table>
         </div>
-
+        <!--Loading Spinner-->   
+        <div id="loadingSpinner" class="hidden flex justify-center items-center">
+            <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+            <span class="ml-2 text-blue-500">Loading...</span>
+          </div>
         <div id="pagination" class="mt-4 flex justify-evenly">
             <!-- Pagination will be dynamically inserted here -->
         </div>
