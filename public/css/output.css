@@ -1051,10 +1051,6 @@ select {
   border-bottom-width: 1px;
 }
 
-.border-b-2 {
-  border-bottom-width: 2px;
-}
-
 .border-r-0 {
   border-right-width: 0px;
 }
@@ -1214,6 +1210,11 @@ select {
 
 .align-bottom {
   vertical-align: bottom;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {

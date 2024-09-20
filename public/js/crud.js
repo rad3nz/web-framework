@@ -40,18 +40,34 @@ function addTableEventListeners() {
     editButtons.forEach(button => {
         button.addEventListener('click', async function() {
             const id = this.getAttribute('data-id');
-            const data = await fetchById(currentDataType, id);
-            
-            if (data) {
-                populateEditModal(data);
-                document.getElementById('editModal').classList.remove('hidden');
-            } else {
-                showErrorDialog(`Failed to load ${currentDataType} data.`);
+
+            if (currentDataType === 'campaign') {
+                // Campaign: Load the campaign-detail.html and associated script.js
+                await loadPageContent('./module/campaign-detail/data.html', './module/campaign-detail/script.js');
+
+                // Fetch campaign data by ID and populate the detail page
+                const campaignData = await fetchCampaignDetail('campaign', id, state[currentDataType].currentPage);
+                console.log(campaignData);
+                if (campaignData) {
+                    populateCampaignDetailPage(campaignData);
+                } else {
+                    showErrorDialog('Failed to load campaign data.');
+                }
+            } else if (currentDataType === 'admin') {
+                // Fetch data and open the edit modal for other data types
+                const data = await fetchById(currentDataType, id);
+                
+                if (data) {
+                    populateEditModal(data);
+                    document.getElementById('editModal').classList.remove('hidden');
+                } else {
+                    showErrorDialog(`Failed to load ${currentDataType} data.`);
+                }
             }
         });
     });
 
-    // Delete button listener
+    // Delete button listener remains the same for all data types
     const deleteButtons = document.querySelectorAll('.deleteButton');
     deleteButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -162,6 +178,34 @@ function populateEditModal(data) {
     }
 }
 
+async function loadPageContent(htmlPath, jsPath) {
+    try {
+        // Fetch and load the HTML content
+        const response = await fetch(htmlPath);
+        if (!response.ok) {
+            throw new Error('Failed to load page content.');
+        }
+
+        const htmlContent = await response.text();
+        document.getElementById('content').innerHTML = htmlContent;
+
+        // Dynamically load and inject the associated JavaScript file
+        const scriptElement = document.createElement('script');
+        scriptElement.src = jsPath;
+        scriptElement.onload = function() {
+            console.log(`Script ${jsPath} loaded successfully.`);
+        };
+        scriptElement.onerror = function() {
+            console.error(`Failed to load script ${jsPath}.`);
+        };
+
+        // Append the script element to the body (or head)
+        document.body.appendChild(scriptElement);
+    } catch (error) {
+        console.error(error);
+        showErrorDialog('Failed to load page.');
+    }
+}
 
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

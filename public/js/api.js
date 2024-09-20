@@ -8,14 +8,15 @@ const endpoints = {
     detail: `${baseUrl}/detail/cs/admin/wa/redirect`,
     update: `${baseUrl}/update/cs/admin/wa/redirect`,
     create: `${baseUrl}/add/cs/admin/wa/redirect`,
-    delete: `${baseUrl}/delete/cs/admin/wa/redirect`
+    delete: `${baseUrl}/delete/cs/admin/wa/redirect`,
   },
   campaign: {
     table: `${baseUrl}/data/campaign/wa/redirect/${owner_id}`,
     detail: `${baseUrl}/detail/campaign/wa/redirect`,
     update: `${baseUrl}/update/campaign/wa/redirect`,
     create: `${baseUrl}/add/campaign/wa/redirect`,
-    delete: `${baseUrl}/delete/campaign/wa/redirect`
+    delete: `${baseUrl}/delete/campaign/wa/redirect`,
+    tabledetail: `${baseUrl}/data/table/detail/campaign/wa/redirect`,
   }
 };
 
@@ -96,5 +97,19 @@ async function deleteData(type, id) {
   } catch (error) {
     console.error(`Error deleting ${type}:`, error);
     return null;
+  }
+}
+
+async function fetchCampaignDetail(type, id, page = 1) {
+  try {
+    const response = await fetch(`${endpoints[type].tabledetail}/${id}/${page}`, {
+      headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+    });
+    
+    if (!response.ok) throw new Error('Network response was not ok');
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching ${type} data:`, error);
+    return { data: [], totalRecords: 0, totalPages: 0 };
   }
 }
