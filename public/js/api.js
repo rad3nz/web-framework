@@ -5,6 +5,7 @@ const API_TOKEN = 'DpacnJf3uEQeM7HN';
 const endpoints = {
   admin: {
     table: `${baseUrl}/data/cs/admin/wa/redirect/${owner_id}`,
+    list: `${baseUrl}/cs/admin/wa/redirect/${owner_id}`,
     detail: `${baseUrl}/detail/cs/admin/wa/redirect`,
     update: `${baseUrl}/update/cs/admin/wa/redirect`,
     create: `${baseUrl}/add/cs/admin/wa/redirect`,
@@ -12,19 +13,32 @@ const endpoints = {
   },
   campaign: {
     table: `${baseUrl}/data/campaign/wa/redirect/${owner_id}`,
+    list: `${baseUrl}/campaign/wa/redirect/${owner_id}`,
     detail: `${baseUrl}/detail/campaign/wa/redirect`,
     update: `${baseUrl}/update/campaign/wa/redirect`,
     create: `${baseUrl}/add/campaign/wa/redirect`,
     delete: `${baseUrl}/delete/campaign/wa/redirect`,
-    tabledetail: `${baseUrl}/data/table/detail/campaign/wa/redirect`,
-  }
+  },
+  detailcampaign: {
+    table: `${baseUrl}/data/table/detail/campaign/wa/redirect`,
+  },
 };
 
-async function fetchData(type, page = 1) {
+async function fetchData(type, page = 1, id = null) {
   try {
-    const response = await fetch(`${endpoints[type].table}/${page}`, {
+    let url;
+
+    if (type === 'detailcampaign') {
+      if (!id) throw new Error('Campaign ID is required for detailcampaign');
+      url = `${endpoints.detailcampaign.table}/${id}/${page}`;
+    } else {
+      url = `${endpoints[type].table}/${page}`;
+    }
+
+    const response = await fetch(url, {
       headers: { 'Authorization': `Bearer ${API_TOKEN}` }
     });
+    
     if (!response.ok) throw new Error('Network response was not ok');
     return await response.json();
   } catch (error) {
@@ -32,6 +46,31 @@ async function fetchData(type, page = 1) {
     return { data: [], totalRecords: 0, totalPages: 0 };
   }
 }
+
+async function fetchList(type) {
+  try {
+    let url;
+
+    url = `${endpoints[type].list}`;
+
+    const response = await fetch(url, {
+      headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${type} data: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    
+    // Normalize data for both admin and campaign responses
+    return result.listData || result.data || []; 
+  } catch (error) {
+    console.error(`Error fetching ${type} list:`, error);
+    return [];
+  }
+}
+
 
 async function fetchById(type, id) {
   try {
@@ -97,19 +136,5 @@ async function deleteData(type, id) {
   } catch (error) {
     console.error(`Error deleting ${type}:`, error);
     return null;
-  }
-}
-
-async function fetchCampaignDetail(type, id, page = 1) {
-  try {
-    const response = await fetch(`${endpoints[type].tabledetail}/${id}/${page}`, {
-      headers: { 'Authorization': `Bearer ${API_TOKEN}` }
-    });
-    
-    if (!response.ok) throw new Error('Network response was not ok');
-    return await response.json();
-  } catch (error) {
-    console.error(`Error fetching ${type} data:`, error);
-    return { data: [], totalRecords: 0, totalPages: 0 };
   }
 }

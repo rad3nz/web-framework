@@ -1,10 +1,11 @@
 let currentDataType = null;
+let campaignId = null;
 
 function setDataType(type) {
     currentDataType = type;
 }
 
-async function fetchAndUpdateData() {
+async function fetchAndUpdateData(id = null) {
     const loadingSpinner = document.getElementById('loadingSpinner');
     const tableBody = document.querySelector('#tableBody');
     
@@ -13,7 +14,7 @@ async function fetchAndUpdateData() {
     tableBody.innerHTML = ''; // Optionally clear previous data
 
     try {
-        const response = await fetchData(currentDataType, state[currentDataType].currentPage);
+        const response = await fetchData(currentDataType, state[currentDataType].currentPage, id);
         if (!response || !response.tableData) {
             throw new Error('Invalid response from the API');
         }
@@ -40,19 +41,19 @@ function addTableEventListeners() {
     editButtons.forEach(button => {
         button.addEventListener('click', async function() {
             const id = this.getAttribute('data-id');
+            campaignId = id;
 
             if (currentDataType === 'campaign') {
                 // Campaign: Load the campaign-detail.html and associated script.js
                 await loadPageContent('./module/campaign-detail/data.html', './module/campaign-detail/script.js');
 
                 // Fetch campaign data by ID and populate the detail page
-                const campaignData = await fetchCampaignDetail('campaign', id, state[currentDataType].currentPage);
+                const campaignData = await fetchData('detailcampaign', state[currentDataType].currentPage, id);
                 console.log(campaignData);
-                if (campaignData) {
-                    populateCampaignDetailPage(campaignData);
-                } else {
+                if (!campaignData) {
                     showErrorDialog('Failed to load campaign data.');
                 }
+
             } else if (currentDataType === 'admin') {
                 // Fetch data and open the edit modal for other data types
                 const data = await fetchById(currentDataType, id);

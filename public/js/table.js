@@ -12,7 +12,13 @@ const state = {
         totalPages: 1,
         totalRecords: 0,
         isSubmitting: false
-    }
+    },
+    detailcampaign: {
+        currentPage: 1,
+        totalPages: 1,
+        totalRecords: 0,
+        isSubmitting: false
+    },
 };
 
 
