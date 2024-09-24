@@ -21,6 +21,7 @@ const endpoints = {
   },
   detailcampaign: {
     table: `${baseUrl}/data/table/detail/campaign/wa/redirect`,
+    delete: `${baseUrl}/delete/detail/campaign/wa/redirect`,
   },
 };
 
@@ -64,7 +65,7 @@ async function fetchList(type) {
     const result = await response.json();
     
     // Normalize data for both admin and campaign responses
-    return result.listData || result.data || []; 
+    return result; 
   } catch (error) {
     console.error(`Error fetching ${type} list:`, error);
     return [];
