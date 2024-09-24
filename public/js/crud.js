@@ -54,7 +54,7 @@ function addTableEventListeners() {
                     showErrorDialog('Failed to load campaign data.');
                 }
 
-            } else if (currentDataType === 'admin') {
+            } else if (currentDataType === 'admin' || 'detailcampaign') {
                 // Fetch data and open the edit modal for other data types
                 const data = await fetchById(currentDataType, id);
                 
