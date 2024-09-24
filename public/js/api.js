@@ -21,6 +21,9 @@ const endpoints = {
   },
   detailcampaign: {
     table: `${baseUrl}/data/table/detail/campaign/wa/redirect`,
+    detail: `${baseUrl}/detail/data/campaign/wa/redirect`,
+    update: `${baseUrl}/update/detail/campaign/wa/redirect`,
+    create: `${baseUrl}/add/detail/campaign/wa/redirect`,
     delete: `${baseUrl}/delete/detail/campaign/wa/redirect`,
   },
 };
