@@ -121,5 +121,67 @@ document.getElementById('create_adminSearchDropdown').addEventListener('focus', 
 });
 
 
+function populateEditAdminDropdown(admins) {
+    const dropdown = document.getElementById('edit_adminSearchDropdown');
+    const list = document.getElementById('edit_adminDropdownList');
+    list.innerHTML = '';
+
+    admins.forEach(admin => {
+        const option = document.createElement('li');
+        option.classList.add('px-4', 'py-2', 'cursor-pointer', 'hover:bg-gray-100');
+        option.textContent = admin.cs_admin;
+        option.setAttribute('data-value', admin.cs_id);
+        option.addEventListener('click', () => {
+            dropdown.value = admin.cs_admin;
+            dropdown.setAttribute('data-selected-id', admin.cs_id);
+            list.classList.add('hidden');
+        });
+        list.appendChild(option);
+    });
+}
+
+// Input event: Filter and show dropdown based on typed input
+document.getElementById('edit_adminSearchDropdown').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const adminDropdownList = document.getElementById('edit_adminDropdownList');
+    const options = adminDropdownList.querySelectorAll('li');
+    
+    let hasVisibleOptions = false;
+
+    // Show matching options based on input
+    options.forEach(option => {
+        if (option.textContent.toLowerCase().includes(searchTerm)) {
+            option.style.display = '';  // Show matching options
+            hasVisibleOptions = true;
+        } else {
+            option.style.display = 'none';  // Hide non-matching options
+        }
+    });
+
+    // Show the dropdown if there are visible options and the user has started typing
+    if (hasVisibleOptions && searchTerm.trim() !== '') {
+        adminDropdownList.classList.remove('hidden');
+    } else {
+        adminDropdownList.classList.add('hidden');
+    }
+});
+
+// Hide dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const adminDropdownList = document.getElementById('edit_adminDropdownList');
+    if (!event.target.closest('#edit_adminSearchDropdown') && !event.target.closest('#edit_adminDropdownList')) {
+        adminDropdownList.classList.add('hidden'); // Hide dropdown if clicked outside
+    }
+});
+
+
+// Focus event: Only show dropdown when there is content in the input field
+document.getElementById('edit_adminSearchDropdown').addEventListener('focus', function() {
+    const adminDropdownList = document.getElementById('edit_adminDropdownList');
+    if (this.value.trim() !== '') {  // Only show if there is already text typed
+        adminDropdownList.classList.remove('hidden');
+    }
+});
+
 // Initialize
 fetchAndUpdateData(campaignId);

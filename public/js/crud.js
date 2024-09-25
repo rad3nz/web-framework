@@ -41,9 +41,9 @@ function addTableEventListeners() {
     editButtons.forEach(button => {
         button.addEventListener('click', async function() {
             const id = this.getAttribute('data-id');
-            campaignId = id;
 
             if (currentDataType === 'campaign') {
+                campaignId = id;
                 // Campaign: Load the campaign-detail.html and associated script.js
                 await loadPageContent('./module/campaign-detail/data.html', './module/campaign-detail/script.js');
 
@@ -54,9 +54,27 @@ function addTableEventListeners() {
                     showErrorDialog('Failed to load campaign data.');
                 }
 
-            } else if (currentDataType === 'admin' || 'detailcampaign') {
+            } else if (currentDataType === 'admin') {
                 // Fetch data and open the edit modal for other data types
                 const data = await fetchById(currentDataType, id);
+                
+                if (data) {
+                    populateEditModal(data);
+                    document.getElementById('editModal').classList.remove('hidden');
+                } else {
+                    showErrorDialog(`Failed to load ${currentDataType} data.`);
+                }
+            } else if (currentDataType === 'detailcampaign') {
+                // Fetch data and open the edit modal for other data types
+                const data = await fetchById(currentDataType, id);
+                const adminDropdownList = document.getElementById('edit_adminDropdownList');
+                adminDropdownList.classList.add('hidden');
+                console.log(campaignId);
+
+                const admins = await fetchList('admin'); // Wait for the fetch to complete
+                if (admins.listData && Array.isArray(admins.listData)) {
+                    populateEditAdminDropdown(admins.listData);  // Pass the listData to the function
+                }
                 
                 if (data) {
                     populateEditModal(data);
@@ -121,6 +139,20 @@ async function handleCreate() {
 async function handleEdit() {
     const id = document.getElementById(`${currentDataType === 'admin' ? 'cs' : 'campaign'}_id`).value;
     const formData = getFormData('edit');
+
+    if (currentDataType == 'detailcampaign') {
+        // Get the selected admin ID and name
+        console.log(campaignId);
+        const adminInput = document.getElementById('edit_adminSearchDropdown');
+        const selectedAdminId = adminInput.getAttribute('data-selected-id');
+        const selectedAdminName = adminInput.value;
+
+        // Add admin information to formData
+        formData.cs_id = selectedAdminId;
+        formData.cs_admin = selectedAdminName;
+        formData.tool_id = 1;
+        console.log(campaignId);
+    }
     
     // Validation
     if (!validateFormData(formData, 'edit')) {
@@ -129,6 +161,7 @@ async function handleEdit() {
 
     // Call the update function from api.js
     const result = await updateData(currentDataType, id, formData);
+    console.log(result);
 
     if (result) {
         showSuccessDialog(`${capitalize(currentDataType)} successfully updated!`);
