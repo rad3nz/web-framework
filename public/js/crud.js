@@ -83,7 +83,7 @@ async function handleCreate() {
     const formData = getFormData('create');
     if (currentDataType == 'detailcampaign') {
         // Get the selected admin ID and name
-        const adminInput = document.getElementById('adminSearchDropdown');
+        const adminInput = document.getElementById('create_adminSearchDropdown');
         const selectedAdminId = adminInput.getAttribute('data-selected-id');
         const selectedAdminName = adminInput.value;
 
@@ -148,7 +148,7 @@ async function handleDelete() {
 
     // Call the delete function from api.js
     const result = await deleteData(currentDataType, id);
-    console.log(result)
+    console.log(result);
 
     if (result) {
         showSuccessDialog(`${capitalize(currentDataType)} successfully deleted!`);
@@ -189,10 +189,10 @@ function validateFormData(formData) {
 function clearForm(formType) {
     const form = document.getElementById(`${formType}Form`);
     if (currentDataType == 'detailcampaign') {
-        const adminInput = document.getElementById('adminSearchDropdown');
+        const adminInput = document.getElementById('create_adminSearchDropdown');
         adminInput.value = '';
         adminInput.removeAttribute('data-selected-id');
-        document.getElementById('adminDropdownList').classList.add('hidden');
+        document.getElementById('create_adminDropdownList').classList.add('hidden');
     }
 
     form.reset();
