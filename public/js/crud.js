@@ -81,6 +81,18 @@ function addTableEventListeners() {
 
 async function handleCreate() {
     const formData = getFormData('create');
+    if (currentDataType == 'detailcampaign') {
+        // Get the selected admin ID and name
+        const adminInput = document.getElementById('adminSearchDropdown');
+        const selectedAdminId = adminInput.getAttribute('data-selected-id');
+        const selectedAdminName = adminInput.value;
+
+        // Add admin information to formData
+        formData.cs_id = selectedAdminId;
+        formData.cs_admin = selectedAdminName;
+        formData.campaign_id = campaignId;
+        formData.tool_id = 1;
+    }
     
     // Validation
     if (!validateFormData(formData, 'create')) {
@@ -89,12 +101,18 @@ async function handleCreate() {
 
     // Call the create function from api.js
     const result = await createData(currentDataType, formData);
+    console.log(formData);
 
     if (result) {
         showSuccessDialog(`${capitalize(currentDataType)} successfully created!`);
         clearForm('create');
         closeModal('createModal');
-        await fetchAndUpdateData();
+        if (currentDataType == 'detailcampaign') {
+            await fetchAndUpdateData(campaignId);
+        } else {
+            await fetchAndUpdateData();
+        }
+
     } else {
         showErrorDialog(`Failed to create ${currentDataType}. Please try again.`);
     }
@@ -114,7 +132,11 @@ async function handleEdit() {
 
     if (result) {
         showSuccessDialog(`${capitalize(currentDataType)} successfully updated!`);
-        await fetchAndUpdateData();
+        if (currentDataType == 'detailcampaign') {
+            await fetchAndUpdateData(campaignId);
+        } else {
+            await fetchAndUpdateData();
+        }
         closeModal('editModal');
     } else {
         showErrorDialog(`Failed to update ${currentDataType}. Please try again.`);
@@ -126,10 +148,16 @@ async function handleDelete() {
 
     // Call the delete function from api.js
     const result = await deleteData(currentDataType, id);
+    console.log(result)
 
     if (result) {
         showSuccessDialog(`${capitalize(currentDataType)} successfully deleted!`);
-        await fetchAndUpdateData();
+
+        if (currentDataType == 'detailcampaign') {
+            await fetchAndUpdateData(campaignId);
+        } else {
+            await fetchAndUpdateData();
+        }
         closeModal('deleteModal');
     } else {
         showErrorDialog(`Failed to delete ${currentDataType}. Please try again.`);
@@ -160,6 +188,13 @@ function validateFormData(formData) {
 
 function clearForm(formType) {
     const form = document.getElementById(`${formType}Form`);
+    if (currentDataType == 'detailcampaign') {
+        const adminInput = document.getElementById('adminSearchDropdown');
+        adminInput.value = '';
+        adminInput.removeAttribute('data-selected-id');
+        document.getElementById('adminDropdownList').classList.add('hidden');
+    }
+
     form.reset();
 }
 

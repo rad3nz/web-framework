@@ -30,6 +30,7 @@
     <div id="pagination" class="mt-4 flex justify-evenly">
         <!-- Pagination will be dynamically inserted here -->
     </div>
+</div>
 
     <!-- Create Modal -->
     <div id="createModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -44,14 +45,16 @@
                             <!-- Merged Admin Searchable Dropdown -->
                             <div class="mb-4 relative">
                                 <label for="adminSearchDropdown" class="block text-sm font-medium text-gray-700">Admin</label>
-                                <input type="text" id="adminSearchDropdown" placeholder="Search and select admin..." class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                <ul id="adminDropdownList" class="absolute z-10 bg-white shadow-md mt-1 w-full border border-gray-300 rounded-md hidden max-h-48 overflow-auto">
+                                <input type="text" name="cs_admin" id="edit_adminSearchDropdown" placeholder="Search and select admin..." 
+                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <ul id="edit_adminDropdownList" class="absolute z-10 bg-white shadow-md mt-1 w-full border border-gray-300 rounded-md hidden max-h-48 overflow-auto">
                                     <!-- Dropdown items will be populated here -->
                                 </ul>
                             </div>
+                            
 
                             <div class="mb-4"></div>
-                                <label for="campaign_message" class="block text-sm font-medium text-gray-700">Nama Campaign</label>
+                                <label for="campaign_message" class="block text-sm font-medium text-gray-700">Campaign Message</label>
                                 <input type="text" name="campaign_message" id="campaign_message" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
                         </form>
@@ -63,9 +66,7 @@
                 </div>
                 
             </div>
-        </div>
-    </div>
-    
+        </div>    
 
 
     <!-- Edit Modal -->
@@ -79,9 +80,14 @@
                     <div class="mt-2">
                         <form id="editForm">
                             <input type="hidden" id="campaign_id" name="campaign_id">
-                            <div class="mb-4">
-                                <label for="edit_campaign_name" class="block text-sm font-medium text-gray-700">Nama Campaign</label>
-                                <input type="text" name="campaign_name" id="edit_campaign_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <!-- Merged Admin Searchable Dropdown -->
+                            <div class="mb-4 relative">
+                                <label for="adminSearchDropdown" class="block text-sm font-medium text-gray-700">Admin</label>
+                                <input type="text" name="cs_admin" id="adminSearchDropdown" placeholder="Search and select admin..." 
+                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <ul id="adminDropdownList" class="absolute z-10 bg-white shadow-md mt-1 w-full border border-gray-300 rounded-md hidden max-h-48 overflow-auto">
+                                    <!-- Dropdown items will be populated here -->
+                                </ul>
                             </div>
                             <div class="mb-4">
                                 <label for="edit_campaign_message" class="block text-sm font-medium text-gray-700">Message Campaign</label>
