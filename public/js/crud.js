@@ -137,7 +137,15 @@ async function handleCreate() {
 }
 
 async function handleEdit() {
-    const id = document.getElementById(`${currentDataType === 'admin' ? 'cs' : 'campaign'}_id`).value;
+    id = null;
+    if (currentDataType === 'admin') {
+        id = document.getElementById(`cs_id`).value;
+    } else if (currentDataType === 'campaign') {
+        id = document.getElementById(`campaign_id`).value;
+    } else if (currentDataType === 'detailcampaign') {
+        id = document.getElementById(`cd_id`).value;
+    }
+    
     const formData = getFormData('edit');
 
     if (currentDataType == 'detailcampaign') {
@@ -151,26 +159,27 @@ async function handleEdit() {
         formData.cs_id = selectedAdminId;
         formData.cs_admin = selectedAdminName;
         formData.tool_id = 1;
-        console.log(campaignId);
+        formData.campaign_id = campaignId;
     }
     
     // Validation
     if (!validateFormData(formData, 'edit')) {
         return;
     }
+    console.log(formData);
 
     // Call the update function from api.js
     const result = await updateData(currentDataType, id, formData);
     console.log(result);
 
     if (result) {
+        closeModal('editModal');
         showSuccessDialog(`${capitalize(currentDataType)} successfully updated!`);
         if (currentDataType == 'detailcampaign') {
             await fetchAndUpdateData(campaignId);
         } else {
             await fetchAndUpdateData();
-        }
-        closeModal('editModal');
+        } 
     } else {
         showErrorDialog(`Failed to update ${currentDataType}. Please try again.`);
     }
