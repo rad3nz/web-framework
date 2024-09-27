@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wago Landing Page</title>
+    <link rel="stylesheet" href="./css/output.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+        <div class="flex items-center">
+            <button id="mobile-menu-button" class="mr-2 md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <div class="text-xl font-bold">Wago</div>
+        </div>
+        <div class="hidden md:flex mx-4">
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="">Beranda</a></button>
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="">Fitur</a></button>
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="">Testimoni</a></button>
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="">Daftar</a></button>
+        </div>
+        <div class="hidden md:flex flex-wrap">
+            <button class="px-6 py-2 rounded-md text-slate-900 font-bold"><a href="">Login</a></button>
+            <button class="px-6 py-2 rounded-md text-white font-bold bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 transition-colors"><a href="">Daftar</a></button>
+        </div>
+    </nav>
+    <div id="navbar-spacer" class="h-16"></div>
+    <div class="flex flex-col md:flex-row">
+        <!-- Sidebar (hidden on mobile by default) -->
+        <aside id="sidebar" class="hidden bg-white p-4 w-full h-screen top-16 z-10 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <button id="close-sidebar" class="lg:hidden text-gray-500 hover:text-gray-700">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul class="space-y-2 flex flex-col items-center">
+                <li><a href="#" class="flex items-center text-slate-900 hover:font-semibold">Beranda</a></li>
+                <li><a href="#" class="flex items-center text-slate-900 hover:font-semibold">Fitur</a></li>
+                <li><a href="#" class="flex items-center text-slate-900 hover:font-semibold">Testimoni</a></li>
+                <li><a href="#" class="flex items-center text-slate-900 hover:font-semibold">Daftar</a></li>
+            </ul>
+           <div class="flex flex-col my-4">
+            <button class="my-2 text-slate-900 font-bold"><a href="">Login</a></button>
+            <button class="my-2 px-2 py-2 rounded-md text-white font-bold bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 transition-colors"><a href="">Daftar</a></button>
+           </div> 
+        </aside>
+    </div>
+    <!-- Main Content -->
+    <main class="p-4">
+        <!-- Hero Section --> 
+        <section class="flex flex-wrap flex-col-reverse md:flex-row columns-1 md:columns-2 rounded-lg p-4 mb-16" id="hero">
+            <div class="flex flex-col w-full md:w-1/2 justify-center">
+                <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-4">Permudah Leads<br>
+                    Dengan <span class="text-cyan-600">Wago</span>
+                </h1>
+                <p class="text-sm md:text-base mb-8">Wago hadir untuk mendistribusikan leads secara adil ke seluruh tim sales Anda. Tak hanya itu, semua database leads tersimpan rapi dan siap Anda gunakan untuk retargeting. Tingkatkan efisiensi tim sales Anda dan raih konversi maksimal</p>
+                <div>
+                    <div class="flex flex-col space-y-2 md:flex-row sm:space-x-4">
+                        <button class="w-full sm:w-auto px-6 py-3 bg-transparent border border-cyan-600 rounded-lg hover:bg-white hover:text-indigo-900 active:bg-slate-200 transition-colors text-base font-bold">Lihat Fitur</button>
+                        <button class="w-full sm:w-auto px-6 py-3 bg-cyan-600 rounded-lg hover:bg-cyan-700 active:bg-cyan-800 transition-colors text-base font-bold text-white">
+                            <a href="">Daftar Sekarang</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <img src="./assets/img/buffer-bro.png" alt="">
+            </div>
+        </section>
+
+        <!--Fitur Section-->
+        <section class="flex flex-wrap md:flex-row columns-1 rounded-lg p-4 mb-16" id="feature">
+            <div class="flex columns-1 md:columns-2 space-y-4">
+                <div class="flex flex-col w-full md:w-1/2 justify-center">
+                    <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-4">Sekali Daftar,<br>
+                        Untuk <span class="text-cyan-600">Selamanya</span>
+                    </h1>
+                    <p class="hidden md:block text-sm md:text-base mb-8">Dengan Wago, Anda hanya perlu mendaftar sekali untuk mendapatkan akses penuh ke fitur distribusi leads canggih kami selamanya! Nikmati ketenangan pikiran dan fokus untuk mengembangkan bisnis Anda, sementara Wago memastikan setiap leads sampai ke tangan tim sales yang tepat</p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="./assets/img/buffer-bro.png" alt="">
+                </div>
+            </div>
+            <div class="flex columns-1 md:columns-2">
+                <div class="w-full md:w-1/2">
+                    <img src="./assets/img/buffer-bro.png" alt="">
+                </div>
+                <div class="flex flex-col w-full md:w-1/2 justify-center">
+                    <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-4">Tidak Manual,<br>
+                        Dengan <span class="text-cyan-600">AI Canggih</span>
+                    </h1>
+                    <p class="hidden md:block text-sm md:text-base mb-8">Wago menggunakan teknologi AI canggih untuk mendistribusikan leads secara otomatis dan cerdas. Sistem kami memastikan setiap leads diarahkan ke anggota tim sales yang tepat berdasarkan kriteria yang Anda tentukan, sehingga Anda dapat mengoptimalkan peluang konversi tanpa repot</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimoni Section -->
+        <section class="flex flex-col columns-1 rounded-lg p-4 mb-16 items-center" id="testimoni">
+            <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-8 text-cyan-600">Testimoni</h1>
+            
+            <!-- Horizontal scrollable container -->
+            <div class="overflow-x-auto w-full">
+                <div class="flex space-x-4 p-4 flex-nowrap">
+                    <!-- Testimony Card 1 -->
+                    <div class="flex-shrink-0 w-full sm:w-96 p-4 flex items-start gap-4 rounded-lg border-2 border-gray-300 bg-white">
+                        <img src="path/to/image.jpg" alt="Profile Picture" class="w-12 h-12 rounded-full">
+                        <div class="flex flex-col">
+                            <p class="text-lg italic">“Alhamdulillah, dengan Wago bisnis dan proses sales saya semakin lancar.”</p>
+                            <p class="mt-2 text-sm font-semibold">- Bayu</p>
+                            <p class="text-sm text-gray-500">Owner DimSUM</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimony Card 2 -->
+                    <div class="flex-shrink-0 w-full sm:w-96 p-4 flex items-start gap-4 rounded-lg border-2 border-gray-300 bg-white">
+                        <img src="path/to/image.jpg" alt="Profile Picture" class="w-12 h-12 rounded-full">
+                        <div class="flex flex-col">
+                            <p class="text-lg italic">“Another testimony text goes here.”</p>
+                            <p class="mt-2 text-sm font-semibold">- Another User</p>
+                            <p class="text-sm text-gray-500">Position/Title</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimony Card 3 -->
+                    <div class="flex-shrink-0 w-full sm:w-96 p-4 flex items-start gap-4 rounded-lg border-2 border-gray-300 bg-white">
+                        <img src="path/to/image.jpg" alt="Profile Picture" class="w-12 h-12 rounded-full">
+                        <div class="flex flex-col">
+                            <p class="text-lg italic">“Another testimony text goes here.”</p>
+                            <p class="mt-2 text-sm font-semibold">- Another User</p>
+                            <p class="text-sm text-gray-500">Position/Title</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimony Card 4 -->
+                    <div class="flex-shrink-0 w-full sm:w-96 p-4 flex items-start gap-4 rounded-lg border-2 border-gray-300 bg-white">
+                        <img src="path/to/image.jpg" alt="Profile Picture" class="w-12 h-12 rounded-full">
+                        <div class="flex flex-col">
+                            <p class="text-lg italic">“Another testimony text goes here.”</p>
+                            <p class="mt-2 text-sm font-semibold">- Another User</p>
+                            <p class="text-sm text-gray-500">Position/Title</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Daftar Section-->
+        <section class="flex flex-col rounded-lg p-4 mb-16 items-center" id="Daftar">
+            <h1 class="text-2xl sm:text-3xl md:text-6xl text-center font-bold mb-8"><span class="text-cyan-600">Daftar sekarang</span> dan mulai kelola leads, marketer, dan tim sales Anda dengan lebih efektif!</h1>
+            <button class="w-full md:w-1/4 px-6 py-3 bg-cyan-600 rounded-lg hover:bg-cyan-700 active:bg-cyan-800 transition-colors text-base font-bold text-white">
+                <a href="">Daftar Sekarang</a>
+            </button>
+        </section>
+
+        <!--Footer-->
+        <footer>
+            
+        </footer>
+
+    </main>
+    <script src="./js/main.js"></script>
+</body>
+</html>
