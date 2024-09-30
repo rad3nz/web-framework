@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     fetch('./json/dummy-testimoni.json')
         .then(response => response.json())
         .then(data => {
-            const testimonialContainer = document.querySelector("#testimoni .overflow-x-auto .flex");
+            const testimonialContainer = document.querySelector("#testimony .overflow-x-auto .flex");
             testimonialContainer.innerHTML = '';
 
             // Randomly select 3 testimonials from the data
