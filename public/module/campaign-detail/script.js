@@ -4,6 +4,16 @@ console.log(pagemodule);
 setDataType('detailcampaign');
 
 console.log(campaignId);
+async function loadCampaignName() {
+    try {
+        const campaignDetail = await fetchById('campaign', campaignId);
+        const campaignName = document.getElementById('campaign-name');
+        campaignName.textContent = campaignDetail.campaign_name;
+    } catch (error) {
+        console.error('Error fetching campaign details:', error);
+    }
+}
+loadCampaignName();
 
 window.rowTemplate = function(item, index) {
     return `
