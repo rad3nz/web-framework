@@ -61,7 +61,7 @@ document.getElementById('addButton').addEventListener('click', async () => {
 
     const campaigns = await fetchList('campaign'); // Wait for the fetch to complete
     if (campaigns.listData && Array.isArray(campaigns.listData)) {
-        populateAdminDropdown(campaigns.listData);  // Pass the listData to the function
+        populateCampaignDropdown(campaigns.listData);  // Pass the listData to the function
     }
     
     document.getElementById('createModal').classList.remove('hidden');
@@ -115,7 +115,7 @@ document.getElementById('create_campaignSearchDropdown').addEventListener('focus
 });
 
 
-function populateCampaignDropdown(campaigns) {
+function populateEditCampaignDropdown(campaigns) {
     const dropdown = document.getElementById('edit_campaignSearchDropdown');
     const list = document.getElementById('edit_campaignDropdownList');
     list.innerHTML = '';
