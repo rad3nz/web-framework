@@ -19,6 +19,12 @@ const state = {
         totalRecords: 0,
         isSubmitting: false
     },
+    tool: {
+        currentPage: 1,
+        totalPages: 1,
+        totalRecords: 0,
+        isSubmitting: false
+    },
 };
 
 

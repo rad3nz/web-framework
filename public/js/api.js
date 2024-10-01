@@ -26,6 +26,14 @@ const endpoints = {
     create: `${baseUrl}/add/detail/campaign/wa/redirect`,
     delete: `${baseUrl}/delete/detail/campaign/wa/redirect`,
   },
+  tool: {
+    table: `${baseUrl}/data/campaign/tool/wa/redirect/${owner_id}`,
+    list: `${baseUrl}/campaign/tool/wa/redirect/${owner_id}`,
+    detail: `${baseUrl}/detail/campaign/tool/wa/redirect`,
+    update: `${baseUrl}/update/campaign/tool/wa/redirect`,
+    create: `${baseUrl}/add/campaign/tool/wa/redirect`,
+    delete: `${baseUrl}/delete/campaign/tool/wa/redirect`,
+  }
 };
 
 async function fetchData(type, page = 1, id = null) {
@@ -38,7 +46,6 @@ async function fetchData(type, page = 1, id = null) {
     } else {
       url = `${endpoints[type].table}/${page}`;
     }
-
     const response = await fetch(url, {
       headers: { 'Authorization': `Bearer ${API_TOKEN}` }
     });

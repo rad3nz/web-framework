@@ -15,6 +15,7 @@ async function fetchAndUpdateData(id = null) {
 
     try {
         const response = await fetchData(currentDataType, state[currentDataType].currentPage, id);
+        console.log(response);
         if (!response || !response.tableData) {
             throw new Error('Invalid response from the API');
         }
@@ -82,6 +83,24 @@ function addTableEventListeners() {
                 } else {
                     showErrorDialog(`Failed to load ${currentDataType} data.`);
                 }
+            } else if (currentDataType === 'tool') {
+                // Fetch data and open the edit modal for other data types
+                const data = await fetchById(currentDataType, id);
+                const campaignDropdownList = document.getElementById('edit_campaignDropdownList');
+                campaignDropdownList.classList.add('hidden');
+                console.log(campaignId);
+
+                const campaigns = await fetchList('campaign'); // Wait for the fetch to complete
+                if (campaigns.listData && Array.isArray(campaigns.listData)) {
+                    populateEditCampaignDropdown(campaigns.listData);  // Pass the listData to the function
+                }
+                
+                if (data) {
+                    populateEditModal(data);
+                    document.getElementById('editModal').classList.remove('hidden');
+                } else {
+                    showErrorDialog(`Failed to load ${currentDataType} data.`);
+                }
             }
         });
     });
@@ -110,6 +129,14 @@ async function handleCreate() {
         formData.cs_admin = selectedAdminName;
         formData.campaign_id = campaignId;
         formData.tool_id = 1;
+    }
+    if (currentDataType == 'tool') {
+        // Get the selected campaign ID and name
+        const campaignInput = document.getElementById('create_campaignSearchDropdown');
+        const selectedCampaignId = campaignInput.getAttribute('data-selected-id');
+
+        // Add campaign information to formData
+        formData.campaign_id = selectedCampaignId;
     }
     
     // Validation
