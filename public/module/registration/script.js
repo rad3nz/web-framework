@@ -1,5 +1,17 @@
-document.getElementById('registerForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the form from submitting the traditional way
+// Function to handle API requests for both registration and login
+function sendApiRequest(endpoint, payload) {
+    return fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)  // Convert payload to JSON
+    });
+}
+
+// Function to handle form submission for registration or login
+function handleRegisterForm(event, endpoint) {
+    event.preventDefault();
 
     // Get form data
     const name = document.getElementById('name').value;
@@ -11,30 +23,30 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         phone: whatsapp
     };
 
-    // Send POST request to the API
-    fetch('https://auth.katib.id/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)  // Convert payload to JSON
-    })
+    // Call the API request function
+    sendApiRequest(endpoint, payload)
     .then(response => {
         if (response.ok) {
             return response.json();  // Parse the JSON response
         } else {
-            throw new Error('Failed to register');
+            throw new Error('Failed to process request');
         }
     })
     .then(data => {
-        console.log('Registration successful:', data);
-        alert('Registration successful!');
+        console.log('Request successful:', data);
+        alert('Request successful!');
 
-        // Clear the form fields after successful registration
+        // Clear the form fields after a successful request
         document.getElementById('registerForm').reset();
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Registration failed: ' + error.message);
+        alert('Request failed: ' + error.message);
     });
+}
+
+// Event listener for the registration form
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    // Replace with the correct API endpoint for registration
+    handleRegisterForm(event, 'https://auth.katib.id/register');
 });
