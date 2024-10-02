@@ -47,7 +47,7 @@ function addTableEventListeners() {
                 campaignId = id;
 
                 // Campaign: Load the campaign-detail.html and associated script.js
-                await loadPageContent('./module/campaign-detail/data.html', './module/campaign-detail/script.js');
+                await loadPageContent('../campaign-detail/data.html', '../campaign-detail/script.js');
                 // Fetch campaign data by ID and populate the detail page
                 const campaignData = await fetchData('detailcampaign', state[currentDataType].currentPage, id);
                 console.log(campaignData);
@@ -86,14 +86,6 @@ function addTableEventListeners() {
             } else if (currentDataType === 'tool') {
                 // Fetch data and open the edit modal for other data types
                 const data = await fetchById(currentDataType, id);
-                const campaignDropdownList = document.getElementById('edit_campaignDropdownList');
-                campaignDropdownList.classList.add('hidden');
-                console.log(campaignId);
-
-                const campaigns = await fetchList('campaign'); // Wait for the fetch to complete
-                if (campaigns.listData && Array.isArray(campaigns.listData)) {
-                    populateEditCampaignDropdown(campaigns.listData);  // Pass the listData to the function
-                }
                 
                 if (data) {
                     populateEditModal(data);
@@ -173,6 +165,8 @@ async function handleEdit() {
         id = document.getElementById(`campaign_id`).value;
     } else if (currentDataType === 'detailcampaign') {
         id = document.getElementById(`cd_id`).value;
+    } else if (currentDataType === 'tool') {
+        id=document.getElementById('tool_id').value;
     }
     
     const formData = getFormData('edit');

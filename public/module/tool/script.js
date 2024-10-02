@@ -8,6 +8,7 @@ window.rowTemplate = function(item, index) {
         <tr>
             <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${index + 1}</td>
             <td class="px-4 py-4 whitespace-normal text-sm text-gray-500">${item.campaign_name}</td>
+            <td class="px-4 py-4 whitespace-normal text-sm text-gray-500">${item.campaign_type}</td>
             <td class="px-4 py-4 whitespace-normal text-sm text-gray-500">${item.google_analytic_id}</td>
             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${item.tiktok_pixel_id}</td>
             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${item.meta_pixel_id}</td>
@@ -133,49 +134,6 @@ function populateEditCampaignDropdown(campaigns) {
         list.appendChild(option);
     });
 }
-
-// Input event: Filter and show dropdown based on typed input
-document.getElementById('edit_campaignSearchDropdown').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const campaignDropdownList = document.getElementById('edit_campaignDropdownList');
-    const options = campaignDropdownList.querySelectorAll('li');
-    
-    let hasVisibleOptions = false;
-
-    // Show matching options based on input
-    options.forEach(option => {
-        if (option.textContent.toLowerCase().includes(searchTerm)) {
-            option.style.display = '';  // Show matching options
-            hasVisibleOptions = true;
-        } else {
-            option.style.display = 'none';  // Hide non-matching options
-        }
-    });
-
-    // Show the dropdown if there are visible options and the user has started typing
-    if (hasVisibleOptions && searchTerm.trim() !== '') {
-        campaignDropdownList.classList.remove('hidden');
-    } else {
-        campaignDropdownList.classList.add('hidden');
-    }
-});
-
-// Hide dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    const campaignDropdownList = document.getElementById('edit_campaignDropdownList');
-    if (!event.target.closest('#edit_campaignSearchDropdown') && !event.target.closest('#edit_campaignDropdownList')) {
-        campaignDropdownList.classList.add('hidden'); // Hide dropdown if clicked outside
-    }
-});
-
-
-// Focus event: Only show dropdown when there is content in the input field
-document.getElementById('edit_campaignSearchDropdown').addEventListener('focus', function() {
-    const campaignDropdownList = document.getElementById('edit_campaignDropdownList');
-    if (this.value.trim() !== '') {  // Only show if there is already text typed
-        campaignDropdownList.classList.remove('hidden');
-    }
-});
 
 // Initialize
 fetchAndUpdateData();

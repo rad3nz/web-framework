@@ -12,6 +12,7 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Campaign</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Campaign</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Google Analytic</th>
                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ID TikTok Pixel</th>
                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ID Meta Pixel</th>
@@ -52,6 +53,10 @@
                                     <!-- Dropdown items will be populated here -->
                                 </ul>
                             </div>
+                            <div class="mb-4">
+                                <label for="create_campaign_type" class="block text-sm font-medium text-gray-700">Jenis Campaign</label>
+                                <input type="text" name="campaign_type" id="create_campaign_type" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
                             
                             <div class="mb-4">
                                 <label for="google_analytic_id" class="block text-sm font-medium text-gray-700">ID Google Analytic</label>
@@ -88,15 +93,10 @@
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Edit Campaign</h3>
                     <div class="mt-2">
                         <form id="editForm">
-                            <input type="hidden" id="cd_id" name="cd_id">
-                            <!-- Merged Admin Searchable Dropdown -->
-                            <div class="mb-4 relative">
-                                <label for="edit_campaignSearchDropdown" class="block text-sm font-medium text-gray-700">Campaign</label>
-                                <input type="text" name="campaign_name" id="edit_campaignSearchDropdown" placeholder="Search and select campaign..." 
-                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                <ul id="edit_campaignDropdownList" class="absolute z-10 bg-white shadow-md mt-1 w-full border border-gray-300 rounded-md hidden max-h-48 overflow-auto">
-                                    <!-- Dropdown items will be populated here -->
-                                </ul>
+                            <input type="hidden" id="tool_id" name="tool_id">                          
+                            <div class="mb-4">
+                                <label for="edit_campaign_type" class="block text-sm font-medium text-gray-700">Jenis Campaign</label>
+                                <input type="text" name="campaign_type" id="edit_campaign_type" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
                             <div class="mb-4">
                                 <label for="edit_google_analytic" class="block text-sm font-medium text-gray-700">ID Google Analytic</label>
@@ -107,8 +107,8 @@
                                 <input type="text" name="tiktok_pixel_id" id="edit_tiktok_pixel" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
                             <div class="mb-4">
-                                <label for="edit_tiktok_pixel" class="block text-sm font-medium text-gray-700">ID Meta Pixel</label>
-                                <input type="text" name="meta_pixel_id" id="edit_tiktok_pixel" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="edit_meta_pixel" class="block text-sm font-medium text-gray-700">ID Meta Pixel</label>
+                                <input type="text" name="meta_pixel_id" id="edit_meta_pixel" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
                         </form>
                     </div>
