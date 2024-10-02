@@ -30,9 +30,9 @@ const endpoints = {
     table: `${baseUrl}/data/campaign/tool/wa/redirect/${owner_id}`,
     list: `${baseUrl}/campaign/tool/wa/redirect/${owner_id}`,
     detail: `${baseUrl}/detail/campaign/tool/wa/redirect`,
-    update: `${baseUrl}/update/campaign/tool/wa/redirect`,
-    create: `${baseUrl}/add/campaign/tool/wa/redirect`,
-    delete: `${baseUrl}/delete/campaign/tool/wa/redirect`,
+    update: `${baseUrl}/update/tool/campaign/wa/redirect`,
+    create: `${baseUrl}/add/tool/campaign/wa/redirect`,
+    delete: `${baseUrl}/delete/tool/campaign/wa/redirect`,
   }
 };
 

@@ -22,7 +22,7 @@ window.rowTemplate = function(item, index) {
 // Implement specific validation for tool form
 function validateFormData(formData, formType) {
     if (formType === 'create') {
-        if (!formData.tool_id || !formData.campaign_name || formData.campaign_name.trim() === '') {
+        if (!formData.campaign_id || !formData.campaign_name || formData.campaign_name.trim() === '') {
             showErrorDialog('Please select a Campaign from the dropdown.');
             return false;
         }

@@ -134,9 +134,11 @@ async function handleCreate() {
         // Get the selected campaign ID and name
         const campaignInput = document.getElementById('create_campaignSearchDropdown');
         const selectedCampaignId = campaignInput.getAttribute('data-selected-id');
+        const selectedCampaignName = campaignInput.value;
 
         // Add campaign information to formData
         formData.campaign_id = selectedCampaignId;
+        formData.campaign_name = selectedCampaignName;
     }
     
     // Validation

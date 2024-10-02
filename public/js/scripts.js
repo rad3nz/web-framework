@@ -12,23 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       document.body.appendChild(script);
     }
-    loadScript('./js/utils.js', function() {
+    loadScript('../../js/utils.js', function() {
       console.log('utils.js loaded successfully.')
     });   
-    loadScript('./js/api.js', function() {
+    loadScript('../../js/api.js', function() {
       console.log('api.js loaded successfully.');
     });  
-    loadScript('./js/table.js', function() {
+    loadScript('../../js/table.js', function() {
       console.log('table.js loaded successfully.');
     });
-    loadScript('./js/crud.js', function() {
+    loadScript('../../js/crud.js', function() {
       console.log('crud.js loaded successfully.');
     });
     
     // Fungsi untuk memuat konten modul
     function loadModuleContent(module) {
       // Gunakan fetch untuk mengambil file data.html dari module yang sesuai
-      fetch(`./module/${module}/data.html`)
+      fetch(`../${module}/data.html`)
         .then(response => {
           if (!response.ok) {
             throw new Error(`Error loading module: ${module}`);
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           // Muat juga script.js dari modul tersebut setelah konten terpasang
           currentScript = document.createElement('script');
-          currentScript.src = `./module/${module}/script.js`;
+          currentScript.src = `../${module}/script.js`;
           document.body.appendChild(currentScript);
           
   
