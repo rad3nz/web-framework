@@ -1,89 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="./css/output.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wago Landing Page</title>
+    <link rel="stylesheet" href="./css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="flex flex-wrap">
-    <nav id="navbar" class="bg-white border-b border-gray-200 px-4 py-3 flex md:hidden items-center justify-between fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
-      <div class="flex items-center">
-          <button id="mobile-menu-button" class="mr-2 md:hidden">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-          </button>
-          <div class="text-xl font-bold">Wago</div>
-      </div>
-    </nav>
-        
-    <!-- Sidebar -->
-    <aside id="sidebar" class="hidden md:block md:w-64 bg-white p-4 w-full h-screen md:sticky top-16 z-10 overflow-y-auto">
-        <div class="flex flex-col h-full justify-between">
-            <div>
-                <h2 class="font-semibold mb-4">Logo</h2>
-                <nav>
-                <ul class="space-y-2">
-                    <li>
-                      <a href="#" data-module="dashboard" class="flex items-center text-slate-900 hover:text-slate-950 hover:font-bold">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-                        </svg>
-                        Dashboard
-                      </a>
-                    </li>
-                </ul>
-                <ul class="space-y-2">
-                    <li>
-                      <a href="#" data-module="admin" class="flex items-center text-slate-900 hover:text-slate-950 hover:font-bold">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-                        </svg>
-                        Admin
-                      </a>
-                    </li>
-                </ul>
-                <ul class="space-y-2">
-                    <li>
-                      <a href="#" data-module="campaign" class="flex items-center text-slate-900 hover:text-slate-950 hover:font-bold">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-                        </svg>
-                        Campaign
-                      </a>
-                    </li>
-                </ul>
-                <ul class="space-y-2">
-                  <li>
-                    <a href="#" data-module="tool" class="flex items-center text-slate-900 hover:text-slate-950 hover:font-bold">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-                      </svg>
-                      Tool
-                    </a>
-                  </li>
-              </ul>
-              </nav>
-            </div>
-            <footer class="flex items-center justify-between">
-                <a href="#" class="text-gray-600 flex items-center space-x-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3" /></svg>
-                    <span>Logout</span>
-                </a>
-                <div class="h-8 w-8 bg-gray-200 rounded-full"></div>
-            </footer>
+    <!-- Navbar -->
+    <nav id="navbar" class="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+        <div class="flex items-center">
+            <button id="mobile-menu-button" class="mr-2 md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <div class="text-xl font-bold">Wago</div>
         </div>
-    </aside>
+        <div class="hidden md:flex mx-4">
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#hero">Beranda</a></button>
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#feature">Fitur</a></button>
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#testimony">Testimoni</a></button>
+            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#registration">Daftar</a></button>
+        </div>
+        <div class="hidden md:flex flex-wrap">
+            <button class="px-6 py-2 rounded-md text-slate-900 font-bold"><a href="">Login</a></button>
+            <button class="px-6 py-2 rounded-md text-white font-bold bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 transition-colors"><a href="">Daftar</a></button>
+        </div>
+    </nav>
+    <div id="navbar-spacer" class="h-16"></div>
+    <div class="flex flex-col md:flex-row">
+        <!-- Sidebar (hidden on mobile by default) -->
+        <aside id="sidebar" class="hidden bg-white p-4 w-full h-screen top-16 z-10 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <button id="close-sidebar" class="lg:hidden text-gray-500 hover:text-gray-700">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul class="space-y-2 flex flex-col items-center">
+                <li><a href="#hero" class="flex items-center text-slate-900 hover:font-semibold">Beranda</a></li>
+                <li><a href="#feature" class="flex items-center text-slate-900 hover:font-semibold">Fitur</a></li>
+                <li><a href="#testimony" class="flex items-center text-slate-900 hover:font-semibold">Testimoni</a></li>
+                <li><a href="#registration" class="flex items-center text-slate-900 hover:font-semibold">Daftar</a></li>
+            </ul>
+           <div class="flex flex-col my-4">
+            <button class="my-2 text-slate-900 font-bold"><a href="">Login</a></button>
+            <button class="my-2 px-2 py-2 rounded-md text-white font-bold bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 transition-colors"><a href="">Daftar</a></button>
+           </div> 
+        </aside>
+    </div>
+    <!-- Main Content -->
+    <main class="p-4">
+        <!-- Hero Section --> 
+        <section class="flex flex-wrap flex-col-reverse md:flex-row columns-1 md:columns-2 rounded-lg p-4 mb-16" id="hero">
+            <div class="flex flex-col w-full md:w-1/2 justify-center">
+                <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-4">Permudah Leads<br>
+                    Dengan <span class="text-cyan-600">Wago</span>
+                </h1>
+                <p class="text-sm md:text-base mb-8">Wago hadir untuk mendistribusikan leads secara adil ke seluruh tim sales Anda. Tak hanya itu, semua database leads tersimpan rapi dan siap Anda gunakan untuk retargeting. Tingkatkan efisiensi tim sales Anda dan raih konversi maksimal</p>
+                <div>
+                    <div class="flex flex-col space-y-2 md:flex-row sm:space-x-4">
+                        <button class="w-full sm:w-auto px-6 py-3 bg-transparent border border-cyan-600 rounded-lg hover:bg-white hover:text-indigo-900 active:bg-slate-200 transition-colors text-base font-bold">Lihat Fitur</button>
+                        <button class="w-full sm:w-auto px-6 py-3 bg-cyan-600 rounded-lg hover:bg-cyan-700 active:bg-cyan-800 transition-colors text-base font-bold text-white">
+                            <a href="./module/registration/registration.html">Daftar Sekarang</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <img src="./assets/img/buffer-bro.png" alt="">
+            </div>
+        </section>
 
-  <main class="flex-1 p-6 mt-16 md:mt-0" id="content">
-    <!-- Content dari module akan dimuat di sini -->
-    <h2>Welcome to Admin Dashboard</h2>
-    <p>Please select a module from the navigation.</p>
-  </main>
-  </div>
+        <!--Fitur Section-->
+        <section class="flex flex-wrap md:flex-row columns-1 rounded-lg p-4 mb-16 space-y-8" id="feature">
+            <div class="flex columns-1 md:columns-2">
+                <div class="flex flex-col w-full md:w-1/2 justify-center">
+                    <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-4">Sekali Daftar,<br>
+                        Untuk <span class="text-cyan-600">Selamanya</span>
+                    </h1>
+                    <p class="hidden md:block text-sm md:text-base mb-8">Dengan Wago, Anda hanya perlu mendaftar sekali untuk mendapatkan akses penuh ke fitur distribusi leads canggih kami selamanya! Nikmati ketenangan pikiran dan fokus untuk mengembangkan bisnis Anda, sementara Wago memastikan setiap leads sampai ke tangan tim sales yang tepat</p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="./assets/img/buffer-bro.png" alt="">
+                </div>
+            </div>
+            <div class="flex columns-1 md:columns-2">
+                <div class="w-full md:w-1/2">
+                    <img src="./assets/img/buffer-bro.png" alt="">
+                </div>
+                <div class="flex flex-col w-full md:w-1/2 justify-center">
+                    <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-4">Tidak Manual,<br>
+                        Dengan <span class="text-cyan-600">AI Canggih</span>
+                    </h1>
+                    <p class="hidden md:block text-sm md:text-base mb-8">Wago menggunakan teknologi AI canggih untuk mendistribusikan leads secara otomatis dan cerdas. Sistem kami memastikan setiap leads diarahkan ke anggota tim sales yang tepat berdasarkan kriteria yang Anda tentukan, sehingga Anda dapat mengoptimalkan peluang konversi tanpa repot</p>
+                </div>
+            </div>
+        </section>
 
-  <script src="./js/scripts.js"></script>
+        <!-- Testimoni Section -->
+        <section class="flex flex-col columns-1 rounded-lg p-4 mb-24 items-center" id="testimony">
+            <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-8 text-cyan-600">Testimoni</h1>
+            
+            <!-- Horizontal scrollable container -->
+            <div class="overflow-x-auto w-full">
+                <div class="flex space-x-4 p-4 flex-nowrap">
+                    <!-- Testimonials will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+
+        <!--Daftar Section-->
+        <section class="flex flex-col rounded-lg p-4 mb-16 items-center" id="registration">
+            <h1 class="text-2xl sm:text-3xl md:text-6xl text-center font-bold mb-8"><span class="text-cyan-600">Daftar sekarang</span> dan mulai kelola leads, marketer, dan tim sales Anda dengan lebih efektif!</h1>
+            <button class="w-full md:w-1/4 px-6 py-3 bg-cyan-600 rounded-lg hover:bg-cyan-700 active:bg-cyan-800 transition-colors text-base font-bold text-white">
+                <a href="./module/registration/registration.html">Daftar Sekarang</a>
+            </button>
+        </section>
+
+    </main>
+
+    <!--Footer-->
+    <footer id="footer" class="w-full bg-cyan-600 text-white p-6 md:p-8 mt-16">
+        <div class="flex flex-col lg:flex-row columns-1 lg:columns-3 items-center lg:items-start justify-evenly space-x-12">
+            <div class="flex-col space-y-4 justify-center">
+                <div class="text-xl lg:text-3xl text-white font-bold text-center lg:text-start">Wago</div>
+                <div class="text-white text-center lg:text-start hover:font-bold lg:max-w-48">Jl.Raaya Bojong Gede No.12-A, Kec. Bojong Gede, Kab. Bogor 123456</div>
+                <div class="flex space-x-4 justify-center lg:justify-start">
+                    <!-- Facebook Icon -->
+                    <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <!-- Twitter Icon -->
+                    <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <!-- Instagram Icon -->
+                    <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden lg:block flex-col space-y-4 justify-center">
+                <div class="text-lg text-white font-bold">Sitemap</div>
+                <div class="flex-col space-y-2">
+                    <div class="text-white hover:font-bold"><a href="#hero">Beranda</a></div>
+                    <div class="text-white hover:font-bold"><a href="#feature">Fitur</a></div>
+                    <div class="text-white hover:font-bold"><a href="#testimony">Testimoni</a></div>
+                    <div class="text-white hover:font-bold"><a href="#registration">Daftar</a></div>
+                </div>
+            </div>
+
+            <div class="hidden lg:block flex-col space-y-4 justify-center">
+                <div class="text-lg text-white font-bold">Contact Us</div>
+                <div class="flex-col space-y-2">
+                    <div class="text-white hover:font-bold">+62857-7099-8885</div>
+                    <div class="text-white hover:font-bold">wago@gmail.com</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+
+    <script src="./js/main.js"></script>
 </body>
 </html>
