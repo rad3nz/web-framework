@@ -28,7 +28,13 @@ window.rowTemplate = function(item, index) {
                 <span class="font-bold mr-2 sm:hidden">Campaign Message:</span>${item.campaign_message}
             </td>
             <td class="flex border-b px-6 py-4 whitespace-nowrap text-sm text-gray-500 sm:table-cell sm:border-b-0">
-                <span class="font-bold mr-2 sm:hidden">Link:</span>${item.url}
+                <span class="font-bold mr-2 sm:hidden">Link:</span>
+                <span class="mr-2">${item.url}</span>
+                <button class="text-blue-600 hover:text-blue-900 copyButton" data-url="${item.url}" title="Copy link">
+                    <svg class="size-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                    </svg>
+                </button>
             </td>
             <td class="flex justify-end px-6 py-4 whitespace-nowrap text-sm font-medium sm:table-cell text-right">
                 <button class="text-indigo-600 hover:text-indigo-900 mr-2 editButton" data-id="${item.cd_id}">Edit</button>
@@ -53,6 +59,15 @@ function validateFormData(formData, formType) {
     }
 
     return true;
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showSuccessAlert('Link copied to clipboard!');
+    }, (err) => {
+        console.error('Could not copy text: ', err);
+        showErrorAlert('Failed to copy link');
+    });
 }
 
 function populateAdminDropdown(admins) {
@@ -200,6 +215,16 @@ document.getElementById('edit_adminSearchDropdown').addEventListener('focus', fu
         adminDropdownList.classList.remove('hidden');
     }
 });
+
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.copyButton')) {
+        const button = e.target.closest('.copyButton');
+        const url = button.getAttribute('data-url');
+        copyToClipboard(url);
+        console.log(url);
+    }
+});
+
 
 // Initialize
 fetchAndUpdateData(campaignId);
