@@ -5,14 +5,26 @@ setDataType('tool');
 
 window.rowTemplate = function(item, index) {
     return `
-        <tr>
-            <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${index + 1}</td>
-            <td class="px-4 py-4 whitespace-normal text-sm text-gray-500">${item.campaign_name}</td>
-            <td class="px-4 py-4 whitespace-normal text-sm text-gray-500">${item.campaign_type}</td>
-            <td class="px-4 py-4 whitespace-normal text-sm text-gray-500">${item.google_analytic_id}</td>
-            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${item.tiktok_pixel_id}</td>
-            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">${item.meta_pixel_id}</td>
-            <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <tr class="flex flex-col mb-4 rounded-lg shadow-md border sm:table-row sm:mb-0 sm:border-none sm:shadow-none">
+            <td class="flex border-b px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 sm:table-cell sm:border-b-0">
+                <span class="font-bold mr-2 sm:hidden">No:</span>${index + 1}
+            </td>
+            <td class="flex border-b px-6 py-4 whitespace-nowrap text-sm text-gray-500 sm:table-cell sm:border-b-0">
+                <span class="font-bold mr-2 sm:hidden">Nama Campaign:</span>${item.campaign_name}
+            </td>
+            <td class="flex border-b px-6 py-4 whitespace-nowrap text-sm text-gray-500 sm:table-cell sm:border-b-0">
+                <span class="font-bold mr-2 sm:hidden">Jenis Campaign:</span>${item.campaign_type}
+            </td>
+            <td class="flex border-b px-6 py-4 whitespace-nowrap text-sm text-gray-500 sm:table-cell sm:border-b-0">
+                <span class="font-bold mr-2 sm:hidden">ID Google Analytic:</span>${item.google_analytic_id}
+            </td>
+            <td class="flex border-b px-6 py-4 whitespace-nowrap text-sm text-gray-500 sm:table-cell sm:border-b-0">
+                <span class="font-bold mr-2 sm:hidden">ID TikTok Pixel:</span>${item.tiktok_pixel_id}
+            </td>
+            <td class="flex border-b px-6 py-4 whitespace-nowrap text-sm text-gray-500 sm:table-cell sm:border-b-0">
+                <span class="font-bold mr-2 sm:hidden">ID Meta Pixel:</span>${item.meta_pixel_id}
+            </td>
+            <td class="flex justify-end px-6 py-4 whitespace-nowrap text-sm font-medium sm:table-cell text-right">
                 <button class="text-indigo-600 hover:text-indigo-900 mr-2 editButton" data-id="${item.tool_id}">Edit</button>
                 <button class="text-red-600 hover:text-red-900 deleteButton" data-id="${item.tool_id}">Delete</button>
             </td>

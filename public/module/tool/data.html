@@ -5,25 +5,25 @@
             + Tambah
         </button>
     </div>
-
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">        
+    <div class="bg-white shadow-md rounded-lg overflow-hidden"></div>
         <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+            <thead class="bg-gray-50 hidden sm:table-header-group">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Campaign</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Campaign</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Google Analytic</th>
-                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ID TikTok Pixel</th>
-                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ID Meta Pixel</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Campaign</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Campaign</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ID Google Analytic</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ID TikTok Pixel</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ID Meta Pixel</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                 </tr>
             </thead>
-            <tbody id="tableBody" class="bg-white divide-y divide-gray-200">
-                   
-                <!-- Table rows will be dynamically inserted here -->
+            <tbody id="tableBody" class="bg-white divide-y-0 sm:divide-y divide-gray-200">
+                <!-- Table rows will be inserted here by JavaScript -->
             </tbody>
         </table>
     </div>
+
     <!--Loading Spinner-->   
     <div id="loadingSpinner" class="hidden flex justify-center items-center mt-4">
         <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
