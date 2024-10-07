@@ -10,13 +10,20 @@
     <main class="bg-white max-w-sm lg:w-full lg:max-w-md mx-auto rounded-lg shadow-lg p-8">
         <h1 class="text-2xl font-bold text-center mb-6 text-gray-700">Daftar WAGO</h1>
         <form id="registerForm" class="space-y-6">
-
             <!-- Nama Lengkap -->
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
                 <input type="text" id="name" name="name" required
                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
                        placeholder="Contoh: Muji Bungwoso">
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                       placeholder="Contoh: muji33@gmail.com">
             </div>
 
             <!-- Nomor WhatsApp -->
@@ -41,7 +48,6 @@
                 Sudah punya akun? 
                 <a href="#" class="text-cyan-600 hover:underline">Login</a>
             </div>
-
         </form>
     </main>
 
