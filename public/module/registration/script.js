@@ -1,104 +1,113 @@
-// Define the API endpoints as variables
-const apiRegister = 'https://auth.katib.id/register';
-const apiCheckout = 'https://auth.katib.id/checkout';
+// Define the API endpoints
+const apiChannel = 'https://api.wa-go.com/channel';
+const apiCheckout = 'https://api.wa-go.com/checkout';
 
-// Function to handle API requests for both registration and checkout
-function sendApiRequest(endpoint, payload) {
-    return fetch(endpoint, {
+// Fetch the available payment channels from the API
+function fetchPaymentChannels() {
+    return fetch(apiChannel, {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => data.data);
+}
+
+// Initiate the checkout process by sending user and payment details to the API
+function initiateCheckout(payload) {
+    return fetch(apiCheckout, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)  // Convert payload to JSON
-    });
-}
-
-// Function to handle checkout API request
-function initiateCheckout() {
-    // Get form data
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const whatsapp = document.getElementById('whatsapp').value;
-
-    // Create the payload object for checkout
-    const payload = {
-        method:"DANA",
-        customerName: name,
-        customerEmail: email,
-        customerPhone: whatsapp
-    };
-
-    return sendApiRequest(apiCheckout, payload)
+        body: JSON.stringify(payload)
+    })
     .then(response => {
         if (response.ok) {
-            return response.json();  // Parse the response JSON
+            return response.json();
         } else {
             throw new Error('Failed to initiate checkout');
         }
-    })
-    .then(data => {
-        if (data.data) {
-            // If checkout is successful and checkout_url is provided, redirect
-            console.log('Checkout successxful:', data);
-            window.location.href = data.data.data.checkout_url;  // Redirect to the checkout page
-            console.log(data.data.data.checkout_url);
-            return true;
-        } else {
-            throw new Error('Checkout URL not found');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Checkout failed: ' + error.message);
-        return false;
     });
 }
 
-// Function to handle form submission for registration
-function handleRegisterForm() {
-    // Get form data
+// Function to show the payment section and hide the user details section
+function showPaymentSection() {
+    document.getElementById('userDetailsSection').classList.add('hidden');
+    document.getElementById('paymentSection').classList.remove('hidden');
+}
+
+// Function to show the user details section and hide the payment section
+function showUserDetailsSection() {
+    document.getElementById('paymentSection').classList.add('hidden');
+    document.getElementById('userDetailsSection').classList.remove('hidden');
+}
+
+// Populate payment channels after selecting payment
+function populatePaymentChannels(channels) {
+    const paymentOptionsContainer = document.getElementById('paymentOptions');
+    paymentOptionsContainer.innerHTML = '';
+
+    channels.forEach(channel => {
+        const optionHTML = `
+            <div class="flex items-center mb-8">
+                <input id="${channel.code}" name="paymentChannel" type="radio" value="${channel.code}"
+                       class="focus:ring-cyan-500 h-4 w-4 text-cyan-600 border-gray-300">
+                <label for="${channel.code}" class="ml-3 block text-sm font-medium text-gray-700">
+                    <img src="${channel.icon_url}" class="inline-block mr-2 h-6 w-12" alt="${channel.name}">
+                    ${channel.name}
+                </label>
+            </div>
+        `;
+        paymentOptionsContainer.insertAdjacentHTML('beforeend', optionHTML);
+    });
+}
+
+// Event listener for the Select Payment button
+document.getElementById('selectPaymentBtn').addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent form submission
+
+    // Fetch payment channels and show payment section
+    fetchPaymentChannels().then(channels => {
+        populatePaymentChannels(channels);
+        showPaymentSection();
+    });
+});
+
+// Event listener for the Back button
+document.getElementById('backBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+    showUserDetailsSection();
+});
+
+// Event listener for the form submission (Submit Payment button)
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent form submission
+
+    // Get user input and selected payment method
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const whatsapp = document.getElementById('whatsapp').value;
+    const selectedPaymentMethod = document.querySelector('input[name="paymentChannel"]:checked').value;
 
-    // Create the payload object for registration
+    // Prepare payload for the checkout API
     const payload = {
+        method: selectedPaymentMethod,
         customerName: name,
         customerEmail: email,
         customerPhone: whatsapp
     };
 
-    // Call the API request function for registration
-    sendApiRequest(apiRegister, payload)
-    .then(response => {
-        if (response.ok) {
-            return response.json();  // Parse the JSON response
-        } else {
-            throw new Error('Failed to process registration');
-        }
-    })
-    .then(data => {
-        console.log('Registration successful:', data);
-        alert('Registration successful!');
-
-        // Clear the form fields after a successful request
-        document.getElementById('registerForm').reset();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Registration failed: ' + error.message);
-    });
-}
-
-// Event listener for the registration form
-document.getElementById('registerForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the default form submission behavior
-
-    // First, initiate the checkout process
-    initiateCheckout().then(success => {
-        // If the checkout succeeds, proceed with the registration
-        if (success) {
-            handleRegisterForm();
-        }
-    });
+    // Initiate the checkout process
+    initiateCheckout(payload)
+        .then(data => {
+            if (data.data && data.data.data.checkout_url) {
+                // Redirect to the checkout page if successful
+                window.location.href = data.data.data.checkout_url;
+            } else {
+                throw new Error('Checkout URL not found');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Checkout failed: ' + error.message);
+        });
 });

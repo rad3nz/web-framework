@@ -9,46 +9,73 @@
 <body class="bg-cyan-600 h-screen flex items-center justify-center">
     <main class="bg-white max-w-sm lg:w-full lg:max-w-md mx-auto rounded-lg shadow-lg p-8">
         <h1 class="text-2xl font-bold text-center mb-6 text-gray-700">Daftar WAGO</h1>
+        
+        <!-- Form for name, email, phone -->
         <form id="registerForm" class="space-y-6">
-            <!-- Nama Lengkap -->
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                <input type="text" id="name" name="name" required
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
-                       placeholder="Contoh: Muji Bungwoso">
+            <div id="userDetailsSection">
+                <!-- Nama Lengkap -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" required
+                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                           placeholder="Contoh: Muji Bungwoso">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block mt-2 text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" required
+                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                           placeholder="Contoh: muji33@gmail.com">
+                </div>
+
+                <!-- Nomor WhatsApp -->
+                <div>
+                    <label for="whatsapp" class="block mt-2 text-sm font-medium text-gray-700">Nomor WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" maxlength="14" required
+                           pattern="^0?8[1-9][0-9]{6,11}$"
+                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                           placeholder="Contoh: 08123456789">
+                </div>
+
+                <!-- Select Payment Button -->
+                <div>
+                    <button type="button" id="selectPaymentBtn"
+                            class="w-full flex justify-center py-2 px-4 my-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                        Select Payment
+                    </button>
+                </div>
             </div>
 
-            <!-- Email -->
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" required
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
-                       placeholder="Contoh: muji33@gmail.com">
-            </div>
+            <!-- Payment Section -->
+            <div id="paymentSection" class="hidden">
+                <h2 class="text-lg font-bold text-gray-700 mb-4">Select Payment Method</h2>
+                
+                <!-- Radio Buttons for Payment Channels -->
+                <div id="paymentOptions"></div>
 
-            <!-- Nomor WhatsApp -->
-            <div>
-                <label for="whatsapp" class="block text-sm font-medium text-gray-700">Nomor WhatsApp</label>
-                <input type="tel" id="whatsapp" name="whatsapp" maxlength="14"  required
-                       pattern="^0?8[1-9][0-9]{6,9}$"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
-                       placeholder="Contoh: 08123456789">
-            </div>
+                <!-- Submit Button -->
+                <div class="mt-4">
+                    <button type="submit" id="submitPaymentBtn"
+                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                        Submit Payment
+                    </button>
+                </div>
 
-            <!-- Register Button -->
-            <div>
-                <button type="submit"
-                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                    Register
-                </button>
-            </div>
-
-            <!-- Sudah punya akun -->
-            <div class="text-center text-sm text-gray-500">
-                Sudah punya akun? 
-                <a href="#" class="text-cyan-600 hover:underline">Login</a>
+                <!-- Back Button -->
+                <div class="my-4">
+                    <button type="button" id="backBtn"
+                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-emerald-500 bg-transparent border-b border-emerald-500">
+                        Back
+                    </button>
+                </div>
             </div>
         </form>
+        <!-- Sudah punya akun -->
+        <div class="text-center text-sm text-gray-500">
+            Sudah punya akun? 
+            <a href="#" class="text-cyan-600 hover:underline">Login</a>
+        </div>
     </main>
 
     <script src="./script.js"></script>
