@@ -1,5 +1,4 @@
-const owner_id = 256;
-const baseUrl = 'https://newapi.katib.id';
+const baseUrl = 'https://api.katib.cloud';
 const API_TOKEN = 'DpacnJf3uEQeM7HN';
 
 const endpoints = {

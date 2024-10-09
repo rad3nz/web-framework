@@ -54,8 +54,8 @@ function validateFormData(formData, formType) {
     }
 
     if (!formData.campaign_message || formData.campaign_message.trim() === '') {
-        showErrorDialog('Campaign Message is required.');
-        return false;
+        formData.campaign_message = "";
+        return true;
     }
 
     return true;

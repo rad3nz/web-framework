@@ -128,7 +128,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
         sessionStorage.setItem('nama', result.nama);
 
         // Redirect to another page
-        window.location.href = '../index.html'; 
+        window.location.href = 'index.html'; 
 
     } catch (error) {
         messageDiv.textContent = error.message;
