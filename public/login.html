@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/login.css" id="main-stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div id="username-password-section">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div id="phone-otp-section" style="display: none;">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone">
+
+                <div id="messageOTP"></div>
+
+                <button type="button" id="send-otp" style="background: #06989E;">Send OTP</button>
+                <div id="loadingOTP" style="display: none;">Sending OTP...</div>
+                
+                <hr>
+                <label for="otp" style="display: none;">Enter OTP</label>
+                <input type="text" id="otp" name="otp" style="display: none;">
+            </div>
+            <button type="submit" style="background: #06989E;">Login</button>
+        </form>
+        <hr>
+        <button id="switch-method" style="background: #06989E;">Switch to WhatsApp Login</button>
+        <div id="message"></div>
+        <div id="loading" style="display: none;">Loading...</div>
+    </div>
+    <script>
+        function loadJSWithTimestamp() {
+            var script = document.createElement('script');
+            script.src = './js/auth.js?v=' + new Date().getTime();
+            document.body.appendChild(script);
+        }
+        window.onload = loadJSWithTimestamp;
+    </script>
+</body>
+</html>
