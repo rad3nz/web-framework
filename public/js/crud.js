@@ -158,7 +158,7 @@ async function handleCreate() {
 }
 
 async function handleEdit() {
-    id = null;
+    let id = null;
     if (currentDataType === 'admin') {
         id = document.getElementById(`cs_id`).value;
     } else if (currentDataType === 'campaign') {
@@ -166,19 +166,17 @@ async function handleEdit() {
     } else if (currentDataType === 'detailcampaign') {
         id = document.getElementById(`cd_id`).value;
     } else if (currentDataType === 'tool') {
-        id=document.getElementById('tool_id').value;
+        id = document.getElementById('tool_id').value;
     }
     
     const formData = getFormData('edit');
 
     if (currentDataType == 'detailcampaign') {
-        // Get the selected admin ID and name
-        console.log(campaignId);
         const adminInput = document.getElementById('edit_adminSearchDropdown');
         const selectedAdminId = adminInput.getAttribute('data-selected-id');
         const selectedAdminName = adminInput.value;
 
-        // Add admin information to formData
+        // Always include cs_id and cs_admin, even if they haven't changed
         formData.cs_id = selectedAdminId;
         formData.cs_admin = selectedAdminName;
         formData.tool_id = 1;
@@ -269,9 +267,12 @@ function populateEditModal(data) {
         const input = form.querySelector(`[name="${key}"]`);
         if (input) {
             if (key === 'phone') {
-                //remove '62' prefix
                 const phoneNumberWithoutPrefix = data[key].startsWith('62') ? data[key].substring(2) : data[key];
                 input.value = phoneNumberWithoutPrefix;
+            } else if (key === 'cs_admin' && currentDataType === 'detailcampaign') {
+                const adminInput = document.getElementById('edit_adminSearchDropdown');
+                adminInput.value = data[key];
+                adminInput.setAttribute('data-selected-id', data.cs_id);
             } else {
                 input.value = data[key];
             }
