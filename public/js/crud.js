@@ -47,7 +47,7 @@ function addTableEventListeners() {
                 campaignId = id;
 
                 // Campaign: Load the campaign-detail.html and associated script.js
-                await loadPageContent('../campaign-detail/data.html', '../campaign-detail/script.js');
+                await loadPageContent('./module/campaign-detail/data.html', './module/campaign-detail/script.js');
                 // Fetch campaign data by ID and populate the detail page
                 const campaignData = await fetchData('detailcampaign', state[currentDataType].currentPage, id);
                 console.log(campaignData);
