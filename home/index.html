@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav id="navbar" class="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200 transition-transform duration-300">
         <div class="flex items-center">
             <button id="mobile-menu-button" class="mr-2 md:hidden">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -19,28 +19,28 @@
             <div class="text-xl font-bold">Wago</div>
         </div>
         <div class="hidden md:flex mx-4">
-            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#hero">Beranda</a></button>
-            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#why">Fitur</a></button>
-            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#testimony">Testimoni</a></button>
-            <button class=" px-3 py-2 mx-4 "><a class="text-slate-900 hover:font-semibold" href="#registration">Daftar</a></button>
+            <button class="px-3 py-2 mx-4"><a class="text-slate-900 hover:font-semibold" href="#hero">Beranda</a></button>
+            <button class="px-3 py-2 mx-4"><a class="text-slate-900 hover:font-semibold" href="#why">Fitur</a></button>
+            <button class="px-3 py-2 mx-4"><a class="text-slate-900 hover:font-semibold" href="#testimony">Testimoni</a></button>
+            <button class="px-3 py-2 mx-4"><a class="text-slate-900 hover:font-semibold" href="#registration">Daftar</a></button>
         </div>
         <div class="hidden md:flex flex-wrap">
             <button class="px-6 py-2 rounded-full text-slate-900 font-bold"><a href="">Login</a></button>
-            <button class="px-6 py-2 rounded-full text-white font-bold bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 transition-colors"><a href="./module/registration/registration.html">Daftar</a></button>
+            <button class="px-6 py-2 rounded-full text-white bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 font-bold transition-colors"><a href="./module/registration/registration.html">Daftar</a></button>
         </div>
     </nav>
     <div id="navbar-spacer" class="h-16"></div>
     <div class="flex flex-col md:flex-row">
         <!-- Sidebar (hidden on mobile by default) -->
-        <aside id="sidebar" class="hidden bg-white p-4 w-full h-screen top-16 z-10 overflow-y-auto">
-            <div class="flex justify-between items-center mb-4">
+        <aside id="sidebar" class="hidden w-full h-screen top-16 z-10 p-4 bg-white overflow-y-auto">
+            <div class="flex items-center justify-between mb-4">
                 <button id="close-sidebar" class="lg:hidden text-gray-500 hover:text-gray-700">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
-            <ul class="space-y-2 flex flex-col items-center">
+            <ul class="flex flex-col items-center space-y-2">
                 <li><a href="#hero" class="flex items-center text-slate-900 hover:font-semibold">Beranda</a></li>
                 <li><a href="#why" class="flex items-center text-slate-900 hover:font-semibold">Fitur</a></li>
                 <li><a href="#testimony" class="flex items-center text-slate-900 hover:font-semibold">Testimoni</a></li>
@@ -48,21 +48,21 @@
             </ul>
            <div class="flex flex-col my-4">
             <button class="my-2 text-slate-900 font-bold"><a href="">Login</a></button>
-            <button class="my-2 px-2 py-2 rounded-md text-white font-bold bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 transition-colors"><a href="./module/registration/registration.html">Daftar</a></button>
+            <button class="my-2 px-2 py-2 rounded-md text-white bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 font-bold transition-colors"><a href="./module/registration/registration.html">Daftar</a></button>
            </div> 
         </aside>
     </div>
     <!-- Main Content -->
     <main>
         <!-- Hero Section --> 
-        <section class="flex flex-wrap flex-col-reverse md:flex-row w-screen columns-1 md:columns-2 p-8 mb-16  bg-emerald-500" id="hero">
+        <section class="flex flex-col-reverse md:flex-row flex-wrap w-screen columns-1 md:columns-2 p-8 mb-16 bg-emerald-500" id="hero">
             <div class="flex flex-col w-full md:w-1/2 justify-center">
                 <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Ingin leads terdistribusi  secara adil dan efisien? Temukan solusi mudah untuk meningkatkan konversi iklan Anda!
                 </h1>
                 <p class="text-sm md:text-xl text-white mb-8">Bayangkan jika Anda bisa mendistribusikan semua leads secara otomatis kepada tim sales Anda tanpa repot, sekaligus meningkatkan konversi iklan WhatsApp dengan cara yang lebih hemat biaya.</p>
                 <div>
-                    <div class="flex flex-col space-y-2 md:flex-row sm:space-x-4">
-                        <button class="w-full sm:w-auto px-6 py-3 rounded-full bg-slate-950 hover:bg-slate-900 active:bg-slate-800 transition-colors text-base font-bold text-white">
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-x-4">
+                        <button class="w-full sm:w-auto px-6 py-3 rounded-full bg-slate-950 hover:bg-slate-900 active:bg-slate-800 text-base font-bold text-white transition-colors">
                             <a href="./module/registration/registration.html">Pelajari Selengkapnya</a>
                         </button>
                     </div>
@@ -78,10 +78,10 @@
             <div class="container mx-auto px-6 relative">
                 <!-- Cloud 1 -->
                 <img src="./assets/img/2.png" alt="Cloud 1" class="absolute top-0 left-3 md:left-0 size-24 md:size-32">
-                <img src="./assets/img/4.png" alt="Cloud 1" class="hidden md:block absolute top-24 left-32 size-24 md:size-32">
+                <img src="./assets/img/4.png" alt="Cloud 1" class="absolute top-24 left-32 size-24 md:size-32 hidden md:block">
                 <!-- Cloud 2 -->
                 <img src="./assets/img/4.png" alt="Cloud 2" class="absolute -bottom-12 right-3 md:right-0 size-24 md:size-32">
-                <img src="./assets/img/2.png" alt="Cloud 2" class="hidden md:block absolute -bottom-4 right-64 size-24 md:size-32">
+                <img src="./assets/img/2.png" alt="Cloud 2" class="absolute -bottom-4 right-64 size-24 md:size-32 hidden md:block">
                 <!-- Section Wrapper -->
                 <div class="bg-white p-8 md:p-12">
                     <!-- Bulb -->
@@ -122,19 +122,19 @@
         <section class="flex flex-col columns-1 px-16 py-4 mb-8 items-center">
             <h1 class="text-2xl sm:text-3xl md:text-6xl text-center font-bold mb-8 text-emerald-500">Frequently Asked Questions</h1>
             <div class="flex flex-col md:flex-row flex-wrap gap-8 m-8 justify-center">
-                <div class="flex-shrink-0 rounded-lg text-center shadow-md w-full md:w-80 p-8 bg-neutral-50">
+                <div class="flex-shrink-0 w-full md:w-80 rounded-lg shadow-md p-8 text-center bg-neutral-50">
                     <div class="text-emerald-500 text-xl">
                         How long do your products take to be shipped?
                     </div>
                     <p>Having an FAQ section is a great way to present information about your product or service. Using question-and-answer format makes it more relatable to your users.</p>
                 </div>
-                <div class="flex-shrink-0 rounded-lg text-center shadow-md w-full md:w-80 p-8 bg-neutral-50">
+                <div class="flex-shrink-0 w-full md:w-80 rounded-lg shadow-md p-8 text-center bg-neutral-50">
                     <div class="text-emerald-500 text-xl">
                         Do I have to pay taxes on your products?
                     </div>
                     <p>Having an FAQ section is a great way to present information about your product or service. Using question-and-answer format makes it more relatable to your users.</p>
                 </div>
-                <div class="flex-shrink-0 rounded-lg text-center shadow-md w-full md:w-80 p-8 bg-neutral-50">
+                <div class="flex-shrink-0 w-full md:w-80 rounded-lg shadow-md p-8 text-center bg-neutral-50">
                     <div class="text-emerald-500 text-xl">
                         Do you offer any refunds or returns?
                     </div>
@@ -146,13 +146,13 @@
         <section class="flex flex-col columns-1 px-16 py-4 mb-16 items-center" id="testimony">
             <h1 class="text-2xl sm:text-3xl md:text-6xl text-center font-bold mb-8 text-emerald-500">Reviews</h1>
             <div class="flex flex-col md:flex-row flex-wrap gap-8 m-8 justify-center">
-                <div class="flex-shrink-0 rounded-lg text-center shadow-md w-full md:w-80 p-8 bg-neutral-50">
+                <div class="flex-shrink-0 w-full md:w-80 rounded-lg shadow-md p-8 text-center bg-neutral-50">
                     <div class="text-emerald-500 text-xl">
                         Do I have to pay taxes on your products?
                     </div>
                     <p>Having an FAQ section is a great way to present information about your product or service. Using question-and-answer format makes it more relatable to your users.</p>
                 </div>
-                <div class="flex-shrink-0 rounded-lg text-center shadow-md w-full md:w-80 p-8 bg-neutral-50">
+                <div class="flex-shrink-0 w-full md:w-80 rounded-lg shadow-md p-8 text-center bg-neutral-50">
                     <div class="text-emerald-500 text-xl">
                         Do you offer any refunds or returns?
                     </div>
@@ -160,64 +160,61 @@
                 </div>
             </div>
         </section>
-
         <!--Daftar Section--> 
         <section class="flex flex-col p-16 items-center bg-emerald-500" id="registration">
             <h1 class="text-2xl sm:text-3xl md:text-4xl text-center text-white font-bold mb-8">Siap Meningkatkan Konversi dan Distribusi Leads Anda? Dapatkan Wa Go! Sekarang!</h1>
             <p class="text-white text-xl mb-24">
                 Dengan Wa Go!, Anda dapat: Mendistribusikan leads secara adil kepada tim sales, admin, dan CS tanpa ribet. Mengoptimalkan iklan yang berfokus pada konversi click to chat WhatsApp. Melacak performa iklan dengan pixel tracking untuk meningkatkan hasil kampanye Anda. Hemat waktu dan anggaran dengan hasil yang lebih terukur dan efektif
             </p>
-            <button class="w-full md:w-1/4 px-6 py-3 bg-neutral-950 rounded-full hover:bg-slate-900 active:bg-slate-800 transition-colors text-base font-bold text-white">
+            <button class="w-full md:w-1/4 px-6 py-3 rounded-full bg-neutral-950 hover:bg-slate-900 active:bg-slate-800 text-base font-bold text-white transition-colors">
                 <a href="./module/registration/registration.html">Daftar Sekarang</a>
             </button>
         </section>
 
-    </main>
+</main>
 
-    <!--Footer-->
-    <footer id="footer" class="w-full bg-neutral-900 text-white p-6 md:p-8">
-        <div class="flex flex-col lg:flex-row columns-1 lg:columns-3 items-center lg:items-start justify-evenly space-x-12">
-            <div class="flex-col space-y-4 justify-center">
-                <div class="text-xl lg:text-3xl text-white font-bold text-center lg:text-start">Wago</div>
-                <div class="text-white text-center lg:text-start hover:font-bold lg:max-w-48">Jl.Raaya Bojong Gede No.12-A, Kec. Bojong Gede, Kab. Bogor 123456</div>
-                <div class="flex space-x-4 justify-center lg:justify-start">
-                    <!-- Facebook Icon -->
-                    <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <!-- Twitter Icon -->
-                    <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
-                        <i class="fab fa-twitter"></i>
-                    </div>
-                    <!-- Instagram Icon -->
-                    <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
-                        <i class="fab fa-instagram"></i>
-                    </div>
+<!--Footer-->
+<footer id="footer" class="w-full p-6 md:p-8 bg-neutral-900 text-white">
+    <div class="flex flex-col lg:flex-row columns-1 lg:columns-3 items-center lg:items-start justify-evenly space-x-12">
+        <div class="flex-col space-y-4 justify-center">
+            <div class="text-xl lg:text-3xl font-bold text-white text-center lg:text-start">Wago</div>
+            <div class="text-white text-center lg:text-start hover:font-bold lg:max-w-48">Jl.Raaya Bojong Gede No.12-A, Kec. Bojong Gede, Kab. Bogor 123456</div>
+            <div class="flex space-x-4 justify-center lg:justify-start">
+                <!-- Facebook Icon -->
+                <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
+                    <i class="fab fa-facebook-f"></i>
                 </div>
-            </div>
-
-            <div class="hidden lg:block flex-col space-y-4 justify-center">
-                <div class="text-lg text-white font-bold">Sitemap</div>
-                <div class="flex-col space-y-2">
-                    <div class="text-white hover:font-bold"><a href="#hero">Beranda</a></div>
-                    <div class="text-white hover:font-bold"><a href="#why">Fitur</a></div>
-                    <div class="text-white hover:font-bold"><a href="#testimony">Testimoni</a></div>
-                    <div class="text-white hover:font-bold"><a href="#registration">Daftar</a></div>
+                <!-- Twitter Icon -->
+                <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
+                    <i class="fab fa-twitter"></i>
                 </div>
-            </div>
-
-            <div class="hidden lg:block flex-col space-y-4 justify-center">
-                <div class="text-lg text-white font-bold">Contact Us</div>
-                <div class="flex-col space-y-2">
-                    <div class="text-white hover:font-bold">+62857-7099-8885</div>
-                    <div class="text-white hover:font-bold">wago@gmail.com</a></div>
+                <!-- Instagram Icon -->
+                <div class="bg-white rounded-full text-cyan-600 p-2 w-10 h-10 flex items-center justify-center">
+                    <i class="fab fa-instagram"></i>
                 </div>
             </div>
         </div>
-    </footer>
-    
-    
 
-    <script src="./js/main.js"></script>
+        <div class="hidden lg:block flex-col space-y-4 justify-center">
+            <div class="text-lg font-bold text-white">Sitemap</div>
+            <div class="flex-col space-y-2">
+                <div class="text-white hover:font-bold"><a href="#hero">Beranda</a></div>
+                <div class="text-white hover:font-bold"><a href="#why">Fitur</a></div>
+                <div class="text-white hover:font-bold"><a href="#testimony">Testimoni</a></div>
+                <div class="text-white hover:font-bold"><a href="#registration">Daftar</a></div>
+            </div>
+        </div>
+
+        <div class="hidden lg:block flex-col space-y-4 justify-center">
+            <div class="text-lg font-bold text-white">Contact Us</div>
+            <div class="flex-col space-y-2">
+                <div class="text-white hover:font-bold">+62857-7099-8885</div>
+                <div class="text-white hover:font-bold">wago@gmail.com</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="./js/main.js"></script>
 </body>
 </html>
