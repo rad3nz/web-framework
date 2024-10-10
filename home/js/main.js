@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     fetch('./json/dummy-testimoni.json')
         .then(response => response.json())
         .then(data => {
-            const testimonialContainer = document.querySelector("#testimony .overflow-x-auto .flex");
+            const testimonialContainer = document.querySelector("#testimony .flex");
             testimonialContainer.innerHTML = '';
 
             // Randomly select 3 testimonials from the data
@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             selectedTestimonials.forEach(testimonial => {
                 testimonialContainer.innerHTML += `
-                    <div class="flex-shrink-0 w-full sm:w-96 p-4 flex items-start gap-4 rounded-lg border-2 border-gray-300 bg-white">
-                        <div class="flex flex-col">
-                            <p class="text-lg italic">${testimonial.text}</p>
-                            <p class="mt-2 text-sm font-semibold">- ${testimonial.name}</p>
-                            <p class="text-sm text-gray-500">${testimonial.position}</p>
-                        </div>
+                    <div class="flex flex-col flex-shrink rounded-lg items-center text-center shadow-md w-full md:w-80 p-8 space-y-4 bg-neutral-50">
+                    <img src="./assets/img/pfp.jpg" alt="" class="object-cover rounded-full size-24">
+                    <p>${testimonial.text}</p>
+                    <div class="text-emerald-500 text-xl font-bold">
+                        ${testimonial.name}
                     </div>
+                </div>
                 `;
             });
         })
